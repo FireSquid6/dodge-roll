@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="64"
+   height="64"
+   viewBox="0 0 16.933333 16.933333"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   sodipodi:docname="enemy_base - Copy.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#111111"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="true"
+     inkscape:zoom="16.408369"
+     inkscape:cx="11.731818"
+     inkscape:cy="26.724167"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid63"
+       spacingx="1.0583333"
+       spacingy="1.0583333"
+       empspacing="4" />
+    <inkscape:grid
+       type="xygrid"
+       id="grid3727"
+       empspacing="8" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2">
+    <linearGradient
+       id="linearGradient3358"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop3356" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient1366"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop1364" />
+    </linearGradient>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#9a0000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none"
+       id="rect1342"
+       width="3.7041667"
+       height="6.6145825"
+       x="6.614583"
+       y="1.0583339"
+       rx="2.3437499e-07"
+       ry="1.2402343" />
+    <circle
+       style="fill:#ff0000;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583;stroke-linejoin:round;stroke-miterlimit:0;fill-opacity:1"
+       id="path458"
+       cx="8.4666662"
+       cy="8.4666662"
+       r="2.1166666" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458333;stroke-linejoin:bevel;stroke-miterlimit:0;stroke-dasharray:none"
+       d="M 6.6145832,7.4083332 V 1.0583333 Z"
+       id="path1274" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583;stroke-linejoin:round;stroke-miterlimit:0"
+       d="M 10.31875,1.0583333 Z"
+       id="path1276" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583;stroke-linejoin:round;stroke-miterlimit:0"
+       d="M 10.31875,1.0583333 Z"
+       id="path1278" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583;stroke-linejoin:round;stroke-miterlimit:0"
+       d="M 10.31875,1.0583333 V 7.4083332"
+       id="path1280" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583;stroke-linejoin:round;stroke-miterlimit:0"
+       d="M 9.5249999,6.6145832 V 1.0583333"
+       id="path1282" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583;stroke-linejoin:round;stroke-miterlimit:0"
+       d="M 7.4083332,1.0583333 V 6.6145832"
+       id="path1284" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583;stroke-linejoin:round;stroke-miterlimit:0"
+       d="M 8.2020832,6.3499999 V 1.0583333"
+       id="path1286" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583;stroke-linejoin:round;stroke-miterlimit:0"
+       d="M 8.7312499,6.3499999 V 1.0583333"
+       id="path1288" />
+  </g>
+</svg>

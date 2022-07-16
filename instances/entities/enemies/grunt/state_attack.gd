@@ -10,6 +10,7 @@ func _init():
 
 
 func _enter(args := []):
+	
 	weapon.equip($WeaponTimer)
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://instances/entities/player/states/state_moving.gd" type="Script" id=1]
 [ext_resource path="res://instances/entities/player/player.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/dice/dice_1.svg" type="Texture" id=12]
 [ext_resource path="res://instances/ui/hud.tscn" type="PackedScene" id=13]
 [ext_resource path="res://instances/entities/player/states/state_overheat.gd" type="Script" id=14]
+[ext_resource path="res://instances/entities/player/hand.svg" type="Texture" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 28, 28 )
@@ -57,20 +58,30 @@ script = ExtResource( 14 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Hands" type="Polygon2D" parent="."]
-position = Vector2( -2.02656e-06, 11.9998 )
+[node name="Hands" type="Sprite" parent="."]
+position = Vector2( 0, 9.53674e-07 )
 scale = Vector2( 1.875, 1.87499 )
-color = Color( 0.968627, 1, 0, 1 )
-offset = Vector2( -1.33333, 13.3333 )
-polygon = PoolVector2Array( -4, -56, -4, -56, -4, -45.3333, 6.66667, -45.3333, 6.66667, -56 )
+texture = ExtResource( 15 )
+offset = Vector2( 0.26667, -36.8003 )
 script = ExtResource( 4 )
 
+[node name="Position2D" type="Position2D" parent="Hands"]
+position = Vector2( 0, -56.0003 )
+
 [node name="Sprite" type="Sprite" parent="."]
+use_parent_material = true
 texture = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Face" type="AnimatedSprite" parent="Sprite"]
 frames = SubResource( 2 )
 frame = 4
+
+[node name="Shield" type="Line2D" parent="Sprite"]
+points = PoolVector2Array( 0, -64, -64, 0, 0, 68, 64, 0, 0, -64 )
+width = 5.0
 
 [node name="WeaponTimer" type="Timer" parent="."]
 __meta__ = {

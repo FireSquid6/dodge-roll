@@ -7,6 +7,18 @@ export(int) var dmg = 10
 export var accuracy = 0
 var velocity = Vector2.ZERO
 var mask = 2
+var timer: Timer
+
+
+func _ready():
+	timer = Timer.new()
+	add_child(timer)
+	
+	timer.wait_time = 0.01
+	timer.connect("timeout", self, "timer_timeout")
+	timer.start()
+	
+	visible = false
 
 
 func fire(new_position, angle, new_mask):
@@ -38,3 +50,7 @@ func process_collision(collision: KinematicCollision2D):
 	
 	# destroy the bullet
 	queue_free()
+
+
+func timer_timeout():
+	visible = true

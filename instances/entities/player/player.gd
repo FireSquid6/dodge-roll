@@ -4,8 +4,10 @@ class_name Player
 
 onready var state_machine: StateMachine = get_node("StateMachine")
 onready var weapon_timer: Timer = get_node("WeaponTimer")
-onready var hands: Polygon2D = get_node("Hands")
+onready var hands: Sprite = get_node("Hands")
 onready var face: AnimatedSprite = get_node("Sprite/Face")
+onready var sprite: Sprite = get_node("Sprite")
+onready var shield: Line2D = get_node("Sprite/Shield")
 
 var velocity: Vector2 = Vector2.ZERO
 export(Array, PackedScene) var weapons = [WeaponRevolver.new(), WeaponSMG.new(), WeaponRifle.new(), WeaponCarbine.new(), WeaponShotgun.new(), WeaponRPG.new()]
@@ -13,7 +15,7 @@ export(int) var selected_weapon = 0
 
 export(int) var roll_heat = 0
 export(int) var kill_heal = 50
-export(int) var roll_cost = 50
+export(int) var roll_cost = 70
 export(int) var max_roll_heat = 150
 export(int) var roll_heat_drain = 5
 
@@ -25,6 +27,8 @@ func _ready():
 	Global.player = self
 	
 	reroll_weapon()
+	
+	shield.visible = false
 
 
 func _process(delta):
@@ -47,7 +51,7 @@ func _physics_process(delta):
 
 func update_weapon():
 	var weapon: Weapon = weapons[selected_weapon]
-	weapon.update(hands.global_position, hands.global_rotation)
+	weapon.update(hands.spawn_position, hands.global_rotation)
 
 
 func die():

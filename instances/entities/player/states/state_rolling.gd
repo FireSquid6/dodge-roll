@@ -19,6 +19,7 @@ func _enter(args := [Vector2.ZERO]):
 	
 	# set invincibility
 	player.set_invincible(invincble_time)
+	player.shield.visible = true
 	
 	# get move
 	move = args[0]
@@ -35,8 +36,11 @@ func _enter(args := [Vector2.ZERO]):
 		next_state = "StateOverheat"
 	
 	player.reroll_weapon()
-	
-	
+
+
+func _exit(args := []):
+	player.shield.visible = false
+
 
 func _game_logic(delta):
 	player.velocity = move * roll_spd

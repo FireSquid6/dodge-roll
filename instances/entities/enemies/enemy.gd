@@ -6,6 +6,10 @@ export(NodePath) var animation_player_path = ""
 onready var animation_player: AnimationPlayer = get_node(animation_player_path)
 onready var state_machine = get_node("StateMachine")
 onready var sightline = get_node("Sightline")
+onready var modulated: Node2D = get_node("Modulated")
+
+const attack_color = Color(1, 0.75, 0.75, 1)
+const idle_color = Color(1, 0.75, 1, 1)
 
 
 func _enter_tree():

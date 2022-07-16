@@ -1,12 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://instances/entities/enemies/enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://instances/entities/enemies/sniper/sniper.gd" type="Script" id=2]
 [ext_resource path="res://instances/entities/enemies/sniper/state_search.gd" type="Script" id=3]
+[ext_resource path="res://instances/entities/enemies/sniper/sniper_details.svg" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
 
 [node name="Sniper" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 max_health = 18
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+shape = SubResource( 1 )
 
 [node name="StateIdle" parent="StateMachine" index="0"]
 idle_spd = 0
@@ -28,23 +35,12 @@ points = PoolVector2Array( -128, 0, 0, 0 )
 width = 2.0
 default_color = Color( 1, 0, 0, 1 )
 
-[node name="Sightline" parent="." index="1"]
+[node name="Sightline" parent="." index="2"]
 sight_distance = 1540
 reflex = 0.1
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." index="2"]
-rotation = 1.57192
-polygon = PoolVector2Array( -24, 0, 32, -32, 32, 32 )
-
-[node name="Gun" type="Polygon2D" parent="." index="3"]
-rotation = 1.57192
-color = Color( 0.921569, 1, 0, 1 )
-polygon = PoolVector2Array( -32, -4, -32, 4, -16, 4, -16, -4 )
-
-[node name="Polygon2D" type="Polygon2D" parent="." index="4"]
-rotation = 1.57192
-color = Color( 1, 0.294118, 0.294118, 1 )
-polygon = PoolVector2Array( 32, -32, -24, 0, 32, 32 )
+[node name="Details" type="Sprite" parent="." index="4"]
+texture = ExtResource( 4 )
 
 [connection signal="timeout" from="StateMachine/StateSearch/TrackingTimer" to="StateMachine/StateSearch" method="_on_TrackingTimer_timeout"]
 [connection signal="player_lost" from="Sightline" to="StateMachine/StateSearch" method="_on_Sightline_player_lost"]

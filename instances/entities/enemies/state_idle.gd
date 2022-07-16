@@ -20,15 +20,24 @@ func _enter(args := []):
 	if len(args) == 0:
 		Sound.play_sfx(preload("res://sounds/sfx/deactivate.wav"))
 	
+	# setup movement
 	timer.wait_time = rand_range(min_time, max_time)
 	timer.start()
 	
 	if (randi() % 100 + 1) <= 50:
 		start_moving()
+	
+	# change color
+	var modulated = enemy.get_node("Modulated")
+	modulated.modulate = enemy.idle_color
 
 
 func _exit(args := []):
+	# play sound
 	Sound.play_sfx(preload("res://sounds/sfx/activate.wav"))
+	
+	# change color
+	enemy.modulated.modulate = enemy.attack_color
 
 
 func _game_logic(delta):

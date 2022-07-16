@@ -5,6 +5,7 @@ export var max_spd = 1200
 export var accspd = 18000
 var can_roll = false
 var move = Vector2.ZERO
+export var still_roll_heat_drain = 25
 
 
 func _game_logic(delta):
@@ -29,6 +30,9 @@ func _game_logic(delta):
 		# set the velocity
 		player.velocity = move * distance
 	else:
+		# subtract more from roll heat
+		player.roll_heat -= still_roll_heat_drain * delta
+		
 		# check if snapping to 0 is neccessary
 		if player.velocity.length() <= (accspd * delta):
 			player.velocity = Vector2(0, 0)
