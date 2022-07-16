@@ -8,6 +8,10 @@ onready var state_machine = get_node("StateMachine")
 onready var sightline = get_node("Sightline")
 
 
+func _enter_tree():
+	connect("die", self, "enemy_dead")
+
+
 func _physics_process(delta):
 	# run through states
 	state_machine.process_states(delta)
@@ -30,3 +34,7 @@ func follow_path(path, amount):
 			move_and_collide(position.direction_to(path[0]) * amount)
 			
 			break
+
+
+func enemy_dead():
+	Global.player.enemy_killed(self)

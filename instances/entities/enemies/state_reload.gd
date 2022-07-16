@@ -15,7 +15,7 @@ func _ready():
 func _enter(args := [1, "", []]):
 	next_state = args[1]
 	next_state_args = args[2]
-	timer.time_left = args[0]
+	timer.wait_time = args[0]
 	timer.start()
 
 

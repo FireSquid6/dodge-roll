@@ -4,21 +4,22 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 16.0
-height = 32.0
+height = 16.0
 
 [node name="Projectile" type="KinematicBody2D"]
 scale = Vector2( 0.5, 0.5 )
 collision_layer = 8
 script = ExtResource( 1 )
-dmg = 16
-accuracy = 2
+spd = 1900.0
+dmg = 5
+accuracy = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -6 )
+position = Vector2( 0, 8 )
 shape = SubResource( 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2( 0, -6 )
-scale = Vector2( 1, 1.125 )
-color = Color( 1, 0, 0, 1 )
-polygon = PoolVector2Array( 0, -32, -16, -20, -16, 20, 0, 32, 16, 20, 16, -20 )
+position = Vector2( 0, 6 )
+scale = Vector2( 0.75, 0.625 )
+color = Color( 0.976471, 0.607843, 0.607843, 1 )
+polygon = PoolVector2Array( 0, -32, -16, -24, -16, 24, 0, 32, 16, 24, 16, -24 )

@@ -1,13 +1,30 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://instances/entities/player/states/state_moving.gd" type="Script" id=1]
 [ext_resource path="res://instances/entities/player/player.gd" type="Script" id=2]
 [ext_resource path="res://addons/prototyper/state_machine/state_machine.gd" type="Script" id=3]
 [ext_resource path="res://instances/entities/player/player_hands.gd" type="Script" id=4]
 [ext_resource path="res://instances/entities/player/states/state_rolling.gd" type="Script" id=5]
+[ext_resource path="res://assets/dice/dice_face.svg" type="Texture" id=6]
+[ext_resource path="res://assets/dice/dice_6.svg" type="Texture" id=7]
+[ext_resource path="res://assets/dice/dice_4.svg" type="Texture" id=8]
+[ext_resource path="res://assets/dice/dice_2.svg" type="Texture" id=9]
+[ext_resource path="res://assets/dice/dice_5.svg" type="Texture" id=10]
+[ext_resource path="res://assets/dice/dice_3.svg" type="Texture" id=11]
+[ext_resource path="res://assets/dice/dice_1.svg" type="Texture" id=12]
+[ext_resource path="res://instances/ui/hud.tscn" type="PackedScene" id=13]
+[ext_resource path="res://instances/entities/player/states/state_overheat.gd" type="Script" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 28, 28 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
@@ -17,6 +34,7 @@ script = ExtResource( 2 )
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
 starting_state = NodePath("StateMoving")
+output_changes = true
 
 [node name="StateMoving" type="Node" parent="StateMachine"]
 script = ExtResource( 1 )
@@ -29,16 +47,14 @@ one_shot = true
 script = ExtResource( 5 )
 
 [node name="RollTime" type="Timer" parent="StateMachine/StateRolling"]
-wait_time = 0.25
+wait_time = 0.4
 one_shot = true
+
+[node name="StateOverheat" type="Node" parent="StateMachine"]
+script = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2( 9.53674e-07, 9.53674e-07 )
-scale = Vector2( 0.5, 0.5 )
-polygon = PoolVector2Array( -48, -64, 48.155, -64, 64, -47.3497, 64, 48, 48, 64, -48, 64, -64, 48, -64, -48 )
 
 [node name="Hands" type="Polygon2D" parent="."]
 position = Vector2( -2.02656e-06, 11.9998 )
@@ -48,10 +64,23 @@ offset = Vector2( -1.33333, 13.3333 )
 polygon = PoolVector2Array( -4, -56, -4, -56, -4, -45.3333, 6.66667, -45.3333, 6.66667, -56 )
 script = ExtResource( 4 )
 
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 6 )
+
+[node name="Face" type="AnimatedSprite" parent="Sprite"]
+frames = SubResource( 2 )
+frame = 4
+
 [node name="WeaponTimer" type="Timer" parent="."]
 __meta__ = {
 "_editor_description_": "this timer is a slut, it gets used by every weapon."
 }
 
+[node name="InvincibilityTimer" type="Timer" parent="."]
+
+[node name="UI" parent="." instance=ExtResource( 13 )]
+
+[connection signal="damage_taken" from="." to="." method="_on_Player_damage_taken"]
 [connection signal="timeout" from="StateMachine/StateMoving/RollCooldown" to="StateMachine/StateMoving" method="_on_RollCooldown_timeout"]
 [connection signal="timeout" from="StateMachine/StateRolling/RollTime" to="StateMachine/StateRolling" method="_on_RollTime_timeout"]
+[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_InvincibilityTimer_timeout"]

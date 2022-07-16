@@ -34,6 +34,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://instances/world.gd"
 }, {
+"base": "Weapon",
+"class": "GruntWeapon",
+"language": "GDScript",
+"path": "res://instances/weapons/grunt_weapon/grunt_weapon.gd"
+}, {
+"base": "Control",
+"class": "HUD",
+"language": "GDScript",
+"path": "res://instances/ui/hud.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "PlatformController2D",
 "language": "GDScript",
@@ -83,6 +93,16 @@ _global_script_classes=[ {
 "class": "WeaponRevolver",
 "language": "GDScript",
 "path": "res://instances/weapons/revolver/revolver.gd"
+}, {
+"base": "Weapon",
+"class": "WeaponRifle",
+"language": "GDScript",
+"path": "res://instances/weapons/rifle/rifle.gd"
+}, {
+"base": "Weapon",
+"class": "WeaponSMG",
+"language": "GDScript",
+"path": "res://instances/weapons/smg/smg.gd"
 } ]
 _global_script_class_icons={
 "Circle2D": "",
@@ -90,6 +110,8 @@ _global_script_class_icons={
 "EnemyState": "",
 "Entity": "",
 "GameWorld": "",
+"GruntWeapon": "",
+"HUD": "",
 "PlatformController2D": "",
 "Player": "",
 "PlayerState": "",
@@ -99,7 +121,9 @@ _global_script_class_icons={
 "StateIdle": "",
 "StateMachine": "",
 "Weapon": "",
-"WeaponRevolver": ""
+"WeaponRevolver": "",
+"WeaponRifle": "",
+"WeaponSMG": ""
 }
 
 [application]

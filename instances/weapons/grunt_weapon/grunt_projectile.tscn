@@ -10,15 +10,13 @@ height = 32.0
 scale = Vector2( 0.5, 0.5 )
 collision_layer = 8
 script = ExtResource( 1 )
-dmg = 16
-accuracy = 2
+spd = 1700.0
+dmg = 8
+accuracy = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -6 )
 shape = SubResource( 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2( 0, -6 )
-scale = Vector2( 1, 1.125 )
-color = Color( 1, 0, 0, 1 )
+color = Color( 0.117647, 0.627451, 0.027451, 1 )
 polygon = PoolVector2Array( 0, -32, -16, -20, -16, 20, 0, 32, 16, 20, 16, -20 )

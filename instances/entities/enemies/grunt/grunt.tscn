@@ -9,9 +9,7 @@ extents = Vector2( 28, 28 )
 
 [node name="Grunt" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-
-[node name="StateMachine" parent="." index="0"]
-output_changes = true
+max_health = 25
 
 [node name="StateIdle" parent="StateMachine" index="0"]
 attack_when_spotted = true
@@ -19,6 +17,8 @@ spotted_state = "StateAttack"
 
 [node name="StateAttack" type="Node" parent="StateMachine" index="1"]
 script = ExtResource( 3 )
+
+[node name="WeaponTimer" type="Timer" parent="StateMachine/StateAttack" index="0"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 shape = SubResource( 1 )
