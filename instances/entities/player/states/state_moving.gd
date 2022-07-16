@@ -4,14 +4,15 @@ extends PlayerState
 export var max_spd = 1200
 export var accspd = 18000
 var can_roll = false
+var move = Vector2.ZERO
 
 
 func _game_logic(delta):
-	# update the player's guns
-	
+	# update the player's gun
+	player.update_weapon()
 	
 	# get movement inputs
-	var move = Vector2(int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left")), int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up")))
+	move = Vector2(int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left")), int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up")))
 	
 	# if inputs have been pressed
 	if move.length() > 0:
@@ -27,25 +28,22 @@ func _game_logic(delta):
 		
 		# set the velocity
 		player.velocity = move * distance
-		
-		# move and slide
-		player.velocity = player.move_and_slide(player.velocity)
 	else:
 		# check if snapping to 0 is neccessary
 		if player.velocity.length() <= (accspd * delta):
 			player.velocity = Vector2(0, 0)
-		
-		# otherwise, just decelerate
-		var angle = player.velocity.angle()
-		var new_length = player.velocity.length() - (accspd * delta)
-		
-		player.velocity = Vector2(new_length, 0).rotated(angle)
+		else:
+			# otherwise, just decelerate
+			var angle = player.velocity.angle()
+			var new_length = player.velocity.length() - (accspd * delta)
+			
+			player.velocity = Vector2(new_length, 0).rotated(angle)
 
 
 func _transition_logic(existing_states := []):
-	if can_roll and Input.is_action_just_pressed("roll"):
+	if can_roll and Input.is_action_just_pressed("roll") and move.length() > 0:
 		# transition to rolling
-		pass
+		machine.change_state("StateRolling", [move], [])
 
 
 func _enter(args := []):

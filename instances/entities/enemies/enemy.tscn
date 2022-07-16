@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://instances/entities/enemies/enemy.gd" type="Script" id=1]
+[ext_resource path="res://addons/prototyper/state_machine/state_machine.gd" type="Script" id=2]
+[ext_resource path="res://instances/entities/enemies/sightline/signtline.tscn" type="PackedScene" id=3]
+[ext_resource path="res://instances/entities/enemies/state_idle.gd" type="Script" id=4]
+[ext_resource path="res://instances/entities/enemies/state_reload.gd" type="Script" id=5]
+
+[node name="Enemy" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource( 1 )
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 2 )
+starting_state = NodePath("StateIdle")
+
+[node name="StateIdle" type="Node" parent="StateMachine"]
+script = ExtResource( 4 )
+
+[node name="Timer" type="Timer" parent="StateMachine/StateIdle"]
+
+[node name="StateReload" type="Node" parent="StateMachine"]
+script = ExtResource( 5 )
+
+[node name="Sightline" parent="." instance=ExtResource( 3 )]
+
+[connection signal="timeout" from="StateMachine/StateIdle/Timer" to="StateMachine/StateIdle" method="_on_Timer_timeout"]
+[connection signal="player_spotted" from="Sightline" to="StateMachine/StateIdle" method="_on_Sightline_player_spotted"]

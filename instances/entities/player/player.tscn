@@ -1,22 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://instances/entities/player/states/state_moving.gd" type="Script" id=1]
 [ext_resource path="res://instances/entities/player/player.gd" type="Script" id=2]
 [ext_resource path="res://addons/prototyper/state_machine/state_machine.gd" type="Script" id=3]
+[ext_resource path="res://instances/entities/player/player_hands.gd" type="Script" id=4]
+[ext_resource path="res://instances/entities/player/states/state_rolling.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 32 )
+extents = Vector2( 28, 28 )
 
 [node name="Player" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2( 9.53674e-07, 9.53674e-07 )
-scale = Vector2( 0.5, 0.5 )
-polygon = PoolVector2Array( -64, -64, 64, -64, 64, 64, -64, 64 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
@@ -26,7 +22,36 @@ starting_state = NodePath("StateMoving")
 script = ExtResource( 1 )
 
 [node name="RollCooldown" type="Timer" parent="StateMachine/StateMoving"]
-wait_time = 0.5
+wait_time = 0.1
 one_shot = true
 
+[node name="StateRolling" type="Node" parent="StateMachine"]
+script = ExtResource( 5 )
+
+[node name="RollTime" type="Timer" parent="StateMachine/StateRolling"]
+wait_time = 0.25
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( 9.53674e-07, 9.53674e-07 )
+scale = Vector2( 0.5, 0.5 )
+polygon = PoolVector2Array( -48, -64, 48.155, -64, 64, -47.3497, 64, 48, 48, 64, -48, 64, -64, 48, -64, -48 )
+
+[node name="Hands" type="Polygon2D" parent="."]
+position = Vector2( -2.02656e-06, 11.9998 )
+scale = Vector2( 1.875, 1.87499 )
+color = Color( 0.968627, 1, 0, 1 )
+offset = Vector2( -1.33333, 13.3333 )
+polygon = PoolVector2Array( -4, -56, -4, -56, -4, -45.3333, 6.66667, -45.3333, 6.66667, -56 )
+script = ExtResource( 4 )
+
+[node name="WeaponTimer" type="Timer" parent="."]
+__meta__ = {
+"_editor_description_": "this timer is a slut, it gets used by every weapon."
+}
+
 [connection signal="timeout" from="StateMachine/StateMoving/RollCooldown" to="StateMachine/StateMoving" method="_on_RollCooldown_timeout"]
+[connection signal="timeout" from="StateMachine/StateRolling/RollTime" to="StateMachine/StateRolling" method="_on_RollTime_timeout"]
