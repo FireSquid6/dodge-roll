@@ -69,7 +69,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://singletons/sound/sfx.gd"
 }, {
-"base": "Area2D",
+"base": "Node2D",
 "class": "Sightline",
 "language": "GDScript",
 "path": "res://instances/entities/enemies/sightline/sightline.gd"
