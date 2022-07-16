@@ -10,7 +10,8 @@ func _init():
 
 
 func _enter(args := []):
-	
+	if !enemy.sightline.is_connected("player_lost", self, "_on_Sightline_player_lost"):
+		enemy.sightline.connect("player_lost", self, "_on_Sightline_player_lost")
 	weapon.equip($WeaponTimer)
 
 

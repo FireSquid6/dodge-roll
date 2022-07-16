@@ -24,8 +24,6 @@ script = ExtResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 shape = SubResource( 1 )
 
-[node name="Details" type="Sprite" parent="." index="4"]
+[node name="Details" type="Sprite" parent="." index="3"]
 use_parent_material = true
 texture = ExtResource( 5 )
-
-[connection signal="player_lost" from="Sightline" to="StateMachine/StateAttack" method="_on_Sightline_player_lost"]

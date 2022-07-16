@@ -16,6 +16,10 @@ onready var timer = get_node("Timer")
 
 
 func _enter(args := []):
+	# connect signals
+	if !enemy.sightline.is_connected("player_spotted", self, "_on_Sightline_player_spotted"):
+		enemy.sightline.connect("player_spotted", self, "_on_Sightline_player_spotted")
+	
 	# stupid dumb workaround for my stupid dumb code
 	if len(args) == 0:
 		Sound.play_sfx(preload("res://sounds/sfx/deactivate.wav"))

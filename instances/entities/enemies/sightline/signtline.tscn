@@ -12,6 +12,7 @@ script = ExtResource( 1 )
 [node name="Node" type="Node" parent="."]
 
 [node name="ObstructionChecker" type="Area2D" parent="Node"]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/ObstructionChecker"]
 modulate = Color( 0.0313726, 1, 0, 1 )
@@ -27,4 +28,4 @@ shape = SubResource( 3 )
 [node name="Reflex" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="timeout" from="Reflex" to="RangeChecker" method="_on_Reflex_timeout"]
+[connection signal="timeout" from="Reflex" to="." method="_on_Reflex_timeout"]

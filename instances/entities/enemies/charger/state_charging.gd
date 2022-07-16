@@ -5,6 +5,11 @@ export var distance_threshold = 96
 export var spd = 800
 
 
+func _enter(args := []):
+	if !enemy.sightline.is_connected("player_lost", self, "_on_Sightline_player_lost"):
+		enemy.sightline.connect("player_lost", self, "_on_Sightline_player_lost")
+
+
 func _on_Sightline_player_lost():
 	machine.change_state("StateIdle")
 

@@ -35,11 +35,7 @@ points = PoolVector2Array( -128, 0, 0, 0 )
 width = 2.0
 default_color = Color( 1, 0, 0, 1 )
 
-[node name="Sightline" parent="." index="2"]
-reflex = 0.1
-sight_distance = 1540
-
-[node name="Details" type="Sprite" parent="." index="4"]
+[node name="Details" type="Sprite" parent="." index="3"]
 use_parent_material = true
 texture = ExtResource( 4 )
 

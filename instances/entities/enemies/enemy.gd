@@ -5,12 +5,11 @@ class_name Enemy
 export(NodePath) var animation_player_path = ""
 onready var animation_player: AnimationPlayer = get_node(animation_player_path)
 onready var state_machine = get_node("StateMachine")
-onready var sightline = get_node("Sightline")
 onready var modulated: Node2D = get_node("Modulated")
-onready var sightline_scene = preload("res://instances/entities/enemies/sightline/signtline.tscn")
 
 export var reflex = 0.5
 export var sight = 1024
+var sightline: Sightline
 
 const attack_color = Color("FFC0BF")
 const idle_color = Color("21FA90")
@@ -18,16 +17,20 @@ const idle_color = Color("21FA90")
 
 func _enter_tree():
 	connect("die", self, "enemy_dead")
-
-
-func _ready():
-	var new_sightline: Sightline = sightline_scene.instance()
-	add_child(new_sightline)
-	new_sightline.reflex = reflex
-	new_sightline.sight_distance = sight
+	
+	sightline = preload("res://instances/entities/enemies/sightline/signtline.tscn").instance()
+	add_child(sightline)
+	sightline.reflex = reflex
+	sightline.sight_distance = sight
 
 
 func _physics_process(delta):
+	# move obstruction checkers
+	var obstruction_shape: SegmentShape2D = SegmentShape2D.new()
+	obstruction_shape.a = position
+	obstruction_shape.b = Global.player.global_position
+	sightline.obstruction_checker.get_node("CollisionShape2D").shape = obstruction_shape
+	
 	# run through states
 	if state_machine:
 		state_machine.process_states(delta)

@@ -8,6 +8,9 @@ onready var line = get_node("Line2D")
 
 
 func _enter(args := []):
+	if !enemy.sightline.is_connected("player_lost", self, "_on_Sightline_player_lost"):
+		enemy.sightline.connect("player_lost", self, "_on_Sightline_player_lost")
+	
 	weapon.equip(weapon_timer)
 	tracking_timer.start()
 	

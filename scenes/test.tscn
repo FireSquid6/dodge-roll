@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://instances/entities/enemies/grunt/grunt.tscn" type="PackedScene" id=1]
+[ext_resource path="res://instances/entities/player/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://instances/world.gd" type="Script" id=3]
+[ext_resource path="res://instances/tilemaps/walls/walls.tscn" type="PackedScene" id=4]
+[ext_resource path="res://instances/tilemaps/inverse_walls/inverse_walls.tscn" type="PackedScene" id=5]
+[ext_resource path="res://instances/tilemaps/floor/floor.tscn" type="PackedScene" id=6]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+
+[node name="Grunt" parent="." instance=ExtResource( 1 )]
+position = Vector2( 676, 112 )
+
+[node name="Grunt2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 12, -312 )
+
+[node name="Grunt3" parent="." instance=ExtResource( 1 )]
+position = Vector2( -304, 396 )
+
+[node name="World" type="Navigation2D" parent="."]
+z_index = -2
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Floor" parent="World" instance=ExtResource( 6 )]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Walls" parent="World" instance=ExtResource( 4 )]
+
+[node name="InverseWalls" parent="World" instance=ExtResource( 5 )]
+visible = false
+collision_layer = 0
+collision_mask = 0
