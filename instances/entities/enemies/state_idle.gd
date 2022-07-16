@@ -16,11 +16,19 @@ onready var timer = get_node("Timer")
 
 
 func _enter(args := []):
+	# stupid dumb workaround for my stupid dumb code
+	if len(args) == 0:
+		Sound.play_sfx(preload("res://sounds/sfx/deactivate.wav"))
+	
 	timer.wait_time = rand_range(min_time, max_time)
 	timer.start()
 	
 	if (randi() % 100 + 1) <= 50:
 		start_moving()
+
+
+func _exit(args := []):
+	Sound.play_sfx(preload("res://sounds/sfx/activate.wav"))
 
 
 func _game_logic(delta):

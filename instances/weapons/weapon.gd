@@ -13,6 +13,7 @@ export(int) var mag_size = 6  # the amount of mags in the weapon
 export(float) var cooldown = 0.2  # the amount of time that needs to pass between each shot
 export(PackedScene) var projectile  # the projectile to shoot
 export(int) var target_layer = 2  # the target layer of the weapon
+export(AudioStream) var sound = preload("res://sounds/sfx/gunshot_light.wav")
 export(String) var weapon_name = "Gun"
 
 var can_fire = false  # whether the rifle can shoot or not post-cooldown
@@ -50,9 +51,11 @@ func update(projectile_position, projectile_angle):
 		# if the gun can shoot
 		if shoot:
 			# create the projectile
-			var new_projectile = projectile.instance()
+			var new_projectile: KinematicBody2D = projectile.instance()
 			Global.projectile_container.add_child(new_projectile)
-			new_projectile.fire(projectile_position, projectile_angle, target_layer)
+			Sound.play_sfx(sound)
+			if new_projectile.has_method("fire"):
+				new_projectile.fire(projectile_position, projectile_angle, target_layer)
 			
 			# reset cooldown and mag
 			in_mag -= 1

@@ -7,3 +7,4 @@ func _init():
 	mag_size = 99999
 	cooldown = 0.15
 	projectile = preload("res://instances/weapons/turret_weapon/turret_projectile.tscn")
+	sound = preload("res://sounds/sfx/turret_shoot.wav")

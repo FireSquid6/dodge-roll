@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/activate.mp3-435ea28d961fc6e6c8aed153221fe8f1.mp3str"
+
+[deps]
+
+source_file="res://assets/raw_sounds/activate.mp3"
+dest_files=[ "res://.import/activate.mp3-435ea28d961fc6e6c8aed153221fe8f1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

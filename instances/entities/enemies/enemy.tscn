@@ -13,6 +13,7 @@ script = ExtResource( 1 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 2 )
+starting_args = [ 1 ]
 starting_state = NodePath("StateIdle")
 
 [node name="StateIdle" type="Node" parent="StateMachine"]

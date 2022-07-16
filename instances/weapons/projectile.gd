@@ -28,9 +28,13 @@ func _physics_process(delta):
 	
 	# if there was a collision, process it
 	if collision:
-		# deal damage
-		if collision.collider as Entity:
-			collision.collider.deal_damage(dmg)
-		
-		# destroy the bullet
-		queue_free()
+		process_collision(collision)
+
+
+func process_collision(collision: KinematicCollision2D):
+	# deal damage
+	if collision.collider as Entity:
+		collision.collider.deal_damage(dmg)
+	
+	# destroy the bullet
+	queue_free()

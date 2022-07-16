@@ -8,3 +8,4 @@ func _init():
 	mag_size = 6
 	cooldown = 0.2
 	projectile = preload("res://instances/weapons/revolver/revolver_projectile.tscn")
+	sound = preload("res://sounds/sfx/gunshot_light.wav")

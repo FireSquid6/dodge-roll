@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/activate.wav-4a9933859ff853661b7afeb47dd06884.sample"
+
+[deps]
+
+source_file="res://sounds/sfx/activate.wav"
+dest_files=[ "res://.import/activate.wav-4a9933859ff853661b7afeb47dd06884.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

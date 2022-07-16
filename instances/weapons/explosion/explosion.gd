@@ -17,6 +17,9 @@ func _process(delta):
 	polygon.scale = Vector2(scale, scale)
 	
 	if circle_radius >= max_radius:
+		# play sound
+		Sound.play_sfx(preload("res://sounds/sfx/explosion.wav"))
+		
 		# remove self
 		queue_free()
 		

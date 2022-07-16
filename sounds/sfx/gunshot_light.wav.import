@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/gunshot_light.wav-9f22be973f084e3ea4bbe022afb6b9c3.sample"
+
+[deps]
+
+source_file="res://sounds/sfx/gunshot_light.wav"
+dest_files=[ "res://.import/gunshot_light.wav-9f22be973f084e3ea4bbe022afb6b9c3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

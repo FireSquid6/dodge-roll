@@ -8,7 +8,7 @@ onready var hands: Polygon2D = get_node("Hands")
 onready var face: AnimatedSprite = get_node("Sprite/Face")
 
 var velocity: Vector2 = Vector2.ZERO
-export(Array, PackedScene) var weapons = [WeaponRevolver.new(), WeaponSMG.new(), WeaponRifle.new()]
+export(Array, PackedScene) var weapons = [WeaponRevolver.new(), WeaponSMG.new(), WeaponRifle.new(), WeaponCarbine.new(), WeaponShotgun.new(), WeaponRPG.new()]
 export(int) var selected_weapon = 0
 
 export(int) var roll_heat = 0

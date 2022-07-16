@@ -7,6 +7,7 @@ class_name StateMachine
 var state_history = [] # an array of strings containing the past few states. This list does not include the current state.
 var possible_states = [] # an array of strings containing the name of every possible state
 var selected_state: State # a refernce to whatever state is currently active
+export(Array) var starting_args = []  # arguments for the starting state
 export(NodePath) var starting_state = "" # a path to the starting state
 export(bool) var output_changes = false # whether state changes should be outputted to the debug console
 export var max_state_history_length = 20 # the maximum length the state_history can be
@@ -27,7 +28,7 @@ func _ready():
 		possible_states.append(child.get_name())
 
 	# start initial state
-	change_state(starting_state)
+	change_state(starting_state, starting_args)
 
 
 # changes the state to new_state. The enter_args array will be passed into the new state's _enter() function, while the exit_args array will be passed into the old state's _exit() function

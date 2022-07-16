@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/deactivate.wav-194050d678a7d415915df7ddbd5fc5d5.sample"
+
+[deps]
+
+source_file="res://sounds/sfx/deactivate.wav"
+dest_files=[ "res://.import/deactivate.wav-194050d678a7d415915df7ddbd5fc5d5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
