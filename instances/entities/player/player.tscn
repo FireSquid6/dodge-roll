@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://instances/entities/player/states/state_moving.gd" type="Script" id=1]
 [ext_resource path="res://instances/entities/player/player.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://instances/ui/hud.tscn" type="PackedScene" id=13]
 [ext_resource path="res://instances/entities/player/states/state_overheat.gd" type="Script" id=14]
 [ext_resource path="res://instances/entities/player/hand.svg" type="Texture" id=15]
+[ext_resource path="res://instances/camera.gd" type="Script" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 28, 28 )
@@ -31,7 +32,7 @@ animations = [ {
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 2 )
-max_health = 50
+max_health = 99999
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
@@ -76,6 +77,7 @@ __meta__ = {
 }
 
 [node name="Face" type="AnimatedSprite" parent="Sprite"]
+use_parent_material = true
 frames = SubResource( 2 )
 frame = 4
 
@@ -88,6 +90,10 @@ __meta__ = {
 "_editor_description_": "this timer is a slut, it gets used by every weapon."
 }
 
+[node name="HealTimer" type="Timer" parent="."]
+wait_time = 3.5
+one_shot = true
+
 [node name="InvincibilityTimer" type="Timer" parent="."]
 
 [node name="UI" parent="." instance=ExtResource( 13 )]
@@ -95,9 +101,18 @@ __meta__ = {
 [node name="HUD" parent="UI" index="0"]
 visible = false
 
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+editor_draw_screen = false
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [connection signal="damage_taken" from="." to="." method="_on_Player_damage_taken"]
 [connection signal="timeout" from="StateMachine/StateMoving/RollCooldown" to="StateMachine/StateMoving" method="_on_RollCooldown_timeout"]
 [connection signal="timeout" from="StateMachine/StateRolling/RollTime" to="StateMachine/StateRolling" method="_on_RollTime_timeout"]
+[connection signal="timeout" from="HealTimer" to="." method="_on_HealTimer_timeout"]
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_InvincibilityTimer_timeout"]
 
 [editable path="UI"]

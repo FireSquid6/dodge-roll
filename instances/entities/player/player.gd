@@ -8,17 +8,21 @@ onready var hands: Sprite = get_node("Hands")
 onready var face: AnimatedSprite = get_node("Sprite/Face")
 onready var sprite: Sprite = get_node("Sprite")
 onready var shield: Line2D = get_node("Sprite/Shield")
+onready var heal_timer: Timer = get_node("HealTimer")
 
 var velocity: Vector2 = Vector2.ZERO
 export(Array, PackedScene) var weapons = [WeaponRevolver.new(), WeaponSMG.new(), WeaponRifle.new(), WeaponCarbine.new(), WeaponShotgun.new(), WeaponRPG.new()]
 export(int) var selected_weapon = 0
+var selected_weapon_choices = []
 
 export(int) var roll_heat = 0
 export(int) var kill_heal = 50
 export(int) var roll_cost = 70
 export(int) var max_roll_heat = 150
 export(int) var roll_heat_drain = 5
+export(int) var heal_rate = 25
 
+var can_heal = false
 var rng = RandomNumberGenerator.new()
 
 
@@ -39,6 +43,10 @@ func _process(delta):
 	# manage roll heat
 	roll_heat -= roll_heat_drain * delta
 	roll_heat = clamp(roll_heat, 0, max_roll_heat)
+	
+	# heal if able to
+	if can_heal:
+		health = min(health + (heal_rate * delta), max_health)
 
 
 func _physics_process(delta):
@@ -71,12 +79,24 @@ func _on_InvincibilityTimer_timeout():
 
 
 func _on_Player_damage_taken(dmg):
-	print("I took damage :(")
+	# add screenshake
+	Global.camera.add_trauma(0.2)
+	
+	# reset heal timer
+	can_heal = false
+	heal_timer.start()
 
 
 func reroll_weapon():
+	# if the bag is empty, regenerate it
+	if len(selected_weapon_choices) == 0:
+		for i in range(6):
+			selected_weapon_choices.append(i)
+	selected_weapon_choices.shuffle()
+	
 	# get the index of the selected weapon
-	selected_weapon = rng.randi_range(0, len(weapons) - 1)
+	selected_weapon = selected_weapon_choices[0]
+	selected_weapon_choices.remove(0)
 	weapons[selected_weapon].equip(weapon_timer)
 	
 	# set the frame
@@ -85,3 +105,7 @@ func reroll_weapon():
 
 func enemy_killed(enemy):
 	roll_heat -= kill_heal
+
+
+func _on_HealTimer_timeout():
+	can_heal = true

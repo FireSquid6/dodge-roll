@@ -26,18 +26,11 @@ func _enter(args := []):
 	
 	if (randi() % 100 + 1) <= 50:
 		start_moving()
-	
-	# change color
-	var modulated = enemy.get_node("Modulated")
-	modulated.modulate = enemy.idle_color
 
 
 func _exit(args := []):
 	# play sound
 	Sound.play_sfx(preload("res://sounds/sfx/activate.wav"))
-	
-	# change color
-	enemy.modulated.modulate = enemy.attack_color
 
 
 func _game_logic(delta):

@@ -8,8 +8,8 @@ onready var state_machine = get_node("StateMachine")
 onready var sightline = get_node("Sightline")
 onready var modulated: Node2D = get_node("Modulated")
 
-const attack_color = Color(1, 0.75, 0.75, 1)
-const idle_color = Color(1, 0.75, 1, 1)
+const attack_color = Color("FFC0BF")
+const idle_color = Color("21FA90")
 
 
 func _enter_tree():
@@ -20,6 +20,17 @@ func _physics_process(delta):
 	# run through states
 	if state_machine:
 		state_machine.process_states(delta)
+
+
+func _process(delta):
+	# manage colors
+	modulated.modulate = Color(1, 1, 1, 1)
+	if material == null:
+		match state_machine.selected_state.name:
+			"StateIdle":
+				modulated.modulate = idle_color
+			_:
+				modulated.modulate = attack_color
 
 
 func follow_path(path, amount):
@@ -42,6 +53,12 @@ func follow_path(path, amount):
 
 
 func enemy_dead():
+	# apply screenshake
+	Global.camera.add_trauma(0.4)
+	
+	# create dead body
+	
+	# call player enemy killed signal
 	Global.player.enemy_killed(self)
 
 

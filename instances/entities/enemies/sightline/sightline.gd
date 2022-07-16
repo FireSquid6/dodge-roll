@@ -8,7 +8,8 @@ var player_in_sight = false
 onready var collision_shape: CollisionShape2D = get_node("CollisionShape2D")
 onready var raycast: RayShape2D = collision_shape.shape
 onready var reflex_timer: Timer = get_node("Reflex")
-onready var walline: Area2D = get_node("Walline")
+onready var walline: Area2D = get_node("../Walline")
+onready var enemy: Enemy = get_parent().get_parent()
 
 
 signal player_spotted()
@@ -22,6 +23,9 @@ func _ready():
 
 
 func _physics_process(delta):
+	# move to enemy
+	position = enemy.global_position
+	
 	# angle towards the player
 	global_rotation = global_position.angle_to_point(Global.player.global_position)
 	

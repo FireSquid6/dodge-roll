@@ -7,5 +7,6 @@ func _init():
 	fire_mode = FIRE_MODES.SEMI
 	mag_size = 4
 	cooldown = 0.4
+	screenshake = 0.3
 	projectile = preload("res://instances/weapons/rifle/rifle_projectile.tscn")
 	sound = preload("res://sounds/sfx/gunshot_medium.wav")

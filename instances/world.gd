@@ -30,15 +30,7 @@ func _ready():
 		cursor.x = top_cell.x
 		cursor.y += 1
 	
-	# setup camera
-	var camera: Camera2D = get_node("../Player/Camera2D")
-	var rect: Rect2 = walls.get_used_rect()
-	var size: Vector2 = walls.cell_size
-	
-	camera.limit_left = rect.position.x * size.x
-	camera.limit_right = rect.end.x * size.x
-	camera.limit_top = rect.position.y * size.y
-	camera.limit_bottom = rect.end.y * size.y
+	Global.setup_camera()
 
 
 func get_path_to_player(start_pos):

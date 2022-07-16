@@ -1,7 +1,7 @@
 extends PlayerState
 
 
-export var extra_reduction = 20
+export var extra_reduction = 40
 
 
 func _game_logic(delta):
@@ -18,7 +18,8 @@ func _enter(args := []):
 	Sound.play_sfx(preload("res://sounds/sfx/glass_break.wav"))
 	player.roll_heat = player.max_roll_heat
 	
-	player.sprite.modulate = Color(0.5, 0.5, 1, 1)
+	player.sprite.modulate = Color("B4D2E7")
+	Global.camera.add_trauma(0.75)
 
 
 func _exit(args := []):

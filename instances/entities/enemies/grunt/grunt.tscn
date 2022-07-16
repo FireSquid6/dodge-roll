@@ -25,6 +25,7 @@ script = ExtResource( 3 )
 shape = SubResource( 1 )
 
 [node name="Details" type="Sprite" parent="." index="4"]
+use_parent_material = true
 texture = ExtResource( 5 )
 
 [connection signal="player_lost" from="Sightline" to="StateMachine/StateAttack" method="_on_Sightline_player_lost"]

@@ -34,4 +34,3 @@ use_parent_material = true
 texture = ExtResource( 6 )
 
 [connection signal="timeout" from="StateMachine/StateIdle/Timer" to="StateMachine/StateIdle" method="_on_Timer_timeout"]
-[connection signal="player_spotted" from="Sightline" to="StateMachine/StateIdle" method="_on_Sightline_player_spotted"]

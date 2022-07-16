@@ -15,6 +15,7 @@ export(PackedScene) var projectile  # the projectile to shoot
 export(int) var target_layer = 2  # the target layer of the weapon
 export(AudioStream) var sound = preload("res://sounds/sfx/gunshot_light.wav")
 export(String) var weapon_name = "Gun"
+export(float) var screenshake = 0.1
 
 var can_fire = false  # whether the rifle can shoot or not post-cooldown
 var timer: Timer  # the timer for cooldown
@@ -61,6 +62,10 @@ func update(projectile_position, projectile_angle):
 			in_mag -= 1
 			can_fire = false
 			timer.start()
+			
+			# apply screenshake
+			if fire_mode != FIRE_MODES.AI:
+				Global.camera.add_trauma(screenshake)
 			
 			# emit signal
 			if in_mag == 0:

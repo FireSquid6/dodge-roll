@@ -32,8 +32,9 @@ func _on_Sightline_player_lost():
 
 
 func _on_TrackingTimer_timeout():
-	# shoot
-	weapon.update(enemy.position, enemy.position.angle_to_point(Global.player.position) - PI / 2)
-	
-	# reset tracking timer
-	tracking_timer.start()
+	if machine.selected_state == self:
+		# shoot
+		weapon.update(enemy.position, enemy.position.angle_to_point(Global.player.position) - PI / 2)
+		
+		# reset tracking timer
+		tracking_timer.start()

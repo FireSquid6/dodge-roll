@@ -2,9 +2,13 @@ extends KinematicBody2D
 class_name Entity
 
 
+export var max_health := 100
 var health := 100
 var invincible = false
-export var max_health := 100
+
+onready var hitflash_material = preload("res://instances/entities/hitflash.tres")
+var hitflash_timer: Timer
+export var hitflash_time = 0.2
 
 signal damage_taken(dmg)
 signal die()
@@ -15,6 +19,13 @@ var die_sfx = preload("res://sounds/sfx/dead.wav")
 
 func _ready():
 	health = max_health
+	
+	hitflash_timer = Timer.new()
+	add_child(hitflash_timer)
+	
+	hitflash_timer.one_shot = true
+	hitflash_timer.wait_time = hitflash_time
+	hitflash_timer.connect("timeout", self, "_on_HitflashTimer_timeout")
 
 
 func deal_damage(dmg):
@@ -22,8 +33,10 @@ func deal_damage(dmg):
 		# subtract health
 		health -= dmg
 		
-		# play sound
+		# play and hitflash
 		Sound.play_sfx(damage_sfx)
+		hitflash_timer.start()
+		material = hitflash_material
 		
 		# emit signals
 		emit_signal("damage_taken", dmg)
@@ -31,6 +44,10 @@ func deal_damage(dmg):
 		# check if dead
 		if health <= 0:
 			die()
+
+
+func _on_HitflashTimer_timeout():
+	material = null
 
 
 func die():
