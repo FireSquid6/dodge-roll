@@ -14,7 +14,8 @@ func _enter_tree():
 
 func _physics_process(delta):
 	# run through states
-	state_machine.process_states(delta)
+	if state_machine:
+		state_machine.process_states(delta)
 
 
 func follow_path(path, amount):
@@ -38,3 +39,13 @@ func follow_path(path, amount):
 
 func enemy_dead():
 	Global.player.enemy_killed(self)
+
+
+func look_at_player():
+	look_at(Global.player.position)
+	rotation += PI / 2
+
+
+func move_towards_player(move_spd):
+	var dir = position.direction_to(Global.player.position)
+	move_and_slide(dir * move_spd)

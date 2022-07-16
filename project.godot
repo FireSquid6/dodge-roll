@@ -103,6 +103,16 @@ _global_script_classes=[ {
 "class": "WeaponSMG",
 "language": "GDScript",
 "path": "res://instances/weapons/smg/smg.gd"
+}, {
+"base": "Weapon",
+"class": "WeaponSniper",
+"language": "GDScript",
+"path": "res://instances/weapons/sniper_weapon/sniper_weapon.gd"
+}, {
+"base": "Weapon",
+"class": "WeaponTurret",
+"language": "GDScript",
+"path": "res://instances/weapons/turret_weapon/turret_weapon.gd"
 } ]
 _global_script_class_icons={
 "Circle2D": "",
@@ -123,7 +133,9 @@ _global_script_class_icons={
 "Weapon": "",
 "WeaponRevolver": "",
 "WeaponRifle": "",
-"WeaponSMG": ""
+"WeaponSMG": "",
+"WeaponSniper": "",
+"WeaponTurret": ""
 }
 
 [application]

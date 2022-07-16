@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://instances/entities/enemies/enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://instances/entities/enemies/charger/state_charging.gd" type="Script" id=2]
+[ext_resource path="res://instances/entities/enemies/charger/state_exploding.gd" type="Script" id=3]
+[ext_resource path="res://instances/entities/enemies/charger/charger.gd" type="Script" id=4]
+
+[node name="Enemy" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+max_health = 30
+
+[node name="StateIdle" parent="StateMachine" index="0"]
+attack_when_spotted = true
+spotted_state = "StateCharging"
+
+[node name="StateCharging" type="Node" parent="StateMachine" index="2"]
+script = ExtResource( 2 )
+
+[node name="StateExploding" type="Node" parent="StateMachine" index="3"]
+script = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="StateMachine/StateExploding" index="0"]
+wait_time = 0.5
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="2"]
+rotation = 1.5708
+polygon = PoolVector2Array( -32, -14, -32, 14, -14, 32, 14, 32, 32, 14, 32, -14, 14, -32, -14, -32 )
+
+[node name="Polygon2D" type="Polygon2D" parent="." index="3"]
+rotation = 1.5708
+color = Color( 1, 0.462745, 0.462745, 1 )
+polygon = PoolVector2Array( 32, 14, 32, -14, 14, -32, -14, -32, -32, -14, -32, 14, -14, 32, 14, 32 )
+
+[node name="Shield" type="Line2D" parent="." index="4"]
+rotation = 1.5708
+points = PoolVector2Array( -20, -46, -58, 0, -22, 44 )
+width = 5.0
+default_color = Color( 0.231373, 0.356863, 0.988235, 1 )
+
+[connection signal="timeout" from="StateMachine/StateExploding/Timer" to="StateMachine/StateExploding" method="_on_Timer_timeout"]
+[connection signal="player_lost" from="Sightline" to="StateMachine/StateCharging" method="_on_Sightline_player_lost"]

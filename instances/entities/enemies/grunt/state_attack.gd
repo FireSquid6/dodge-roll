@@ -15,10 +15,8 @@ func _enter(args := []):
 
 func _game_logic(delta):
 	# dash towards the player
-	var dir = enemy.position.direction_to(Global.player.position)
-	enemy.move_and_slide(dir * move_spd)
-	enemy.look_at(Global.player.position)
-	enemy.rotation += PI / 2
+	enemy.move_towards_player(move_spd)
+	enemy.look_at_player()
 	
 	# shoot
 	weapon.update(enemy.position, enemy.position.angle_to_point(Global.player.position) - PI / 2)

@@ -2,7 +2,7 @@ extends Area2D
 class_name Sightline
 
 
-export var sight_distance = 764
+export var sight_distance = 1028
 export var reflex = 0.5
 var player_in_sight = false
 onready var collision_shape: CollisionShape2D = get_node("CollisionShape2D")
@@ -25,8 +25,8 @@ func _physics_process(delta):
 	# angle towards the player
 	global_rotation = global_position.angle_to_point(Global.player.global_position)
 	
-	# check if there are any walls in the way
-	if len(walline.get_overlapping_bodies()) == 0:
+	# check if there are any walls in the way and the sightline can see the player
+	if len(walline.get_overlapping_bodies()) == 0 and len(get_overlapping_bodies()) > 0:
 		# if neccessary, start the timer
 		if reflex_timer.is_stopped() and !player_in_sight:
 			reflex_timer.start()

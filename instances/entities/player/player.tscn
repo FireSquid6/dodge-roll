@@ -30,6 +30,7 @@ animations = [ {
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 2 )
+max_health = 50
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
@@ -80,7 +81,12 @@ __meta__ = {
 
 [node name="UI" parent="." instance=ExtResource( 13 )]
 
+[node name="HUD" parent="UI" index="0"]
+visible = false
+
 [connection signal="damage_taken" from="." to="." method="_on_Player_damage_taken"]
 [connection signal="timeout" from="StateMachine/StateMoving/RollCooldown" to="StateMachine/StateMoving" method="_on_RollCooldown_timeout"]
 [connection signal="timeout" from="StateMachine/StateRolling/RollTime" to="StateMachine/StateRolling" method="_on_RollTime_timeout"]
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_InvincibilityTimer_timeout"]
+
+[editable path="UI"]

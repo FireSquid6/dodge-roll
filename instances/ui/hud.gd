@@ -13,6 +13,7 @@ func _init():
 
 func _ready():
 	$Background.queue_free()
+	visible = true
 
 
 func _process(delta):
