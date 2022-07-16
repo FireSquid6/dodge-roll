@@ -15,7 +15,7 @@ export(int) var roll_heat = 0
 export(int) var kill_heal = 50
 export(int) var roll_cost = 50
 export(int) var max_roll_heat = 150
-export(int) var roll_heat_drain = 10
+export(int) var roll_heat_drain = 5
 
 var rng = RandomNumberGenerator.new()
 
