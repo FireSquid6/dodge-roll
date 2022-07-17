@@ -37,7 +37,6 @@ script = ExtResource( 2 )
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
 starting_state = NodePath("StateMoving")
-output_changes = true
 
 [node name="StateMoving" type="Node" parent="StateMachine"]
 script = ExtResource( 1 )

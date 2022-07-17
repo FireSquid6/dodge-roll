@@ -31,6 +31,8 @@ func _ready():
 	rng.randomize()
 	Global.player = self
 	
+	hud.mode_chosen(Global.mode)
+	
 	reroll_weapon()
 	connect("damage_taken", self, "_on_Player_damage_taken")
 	
@@ -72,6 +74,7 @@ func update_weapon():
 
 func die():
 	Sound.play_sfx(die_sfx)
+	Global.camera.add_trauma(0.5)
 	state_machine.change_state("StateDead")
 	emit_signal("die")
 

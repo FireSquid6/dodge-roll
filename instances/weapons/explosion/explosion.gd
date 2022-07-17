@@ -24,7 +24,7 @@ func _process(delta):
 		queue_free()
 		
 		# explode
-		Global.camera.add_trauma(0.5)
+		Global.camera.add_trauma(0.2)
 		for body in get_overlapping_bodies():
 			if body as Entity:
 				var distance = body.position.distance_to(position)

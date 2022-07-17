@@ -5,8 +5,6 @@ func _ready():
 	Global.projectile_container = $Projectiles
 	Global.body_container = $Bodies
 	Global.enemy_container = $Entities/Enemies
-	
-	Global.enemies_left = $Entities/Enemies.get_child_count()
 
 
 func _process(delta):

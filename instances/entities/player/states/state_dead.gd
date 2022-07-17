@@ -9,4 +9,5 @@ func _enter(args :=[]):
 	player.hud.restart_label.visible = true
 	player.health = 0
 	player.roll_heat = 0
+	player.velocity = Vector2.ZERO
 	player.set_collision_layer_bit(1, false)

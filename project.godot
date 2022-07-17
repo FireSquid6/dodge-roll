@@ -94,6 +94,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/prototyper/state_machine/state_machine.gd"
 }, {
+"base": "Node2D",
+"class": "Summoner",
+"language": "GDScript",
+"path": "res://instances/summoner/summoner.gd"
+}, {
 "base": "Control",
 "class": "TransitionManager",
 "language": "GDScript",
@@ -167,6 +172,7 @@ _global_script_class_icons={
 "State": "",
 "StateIdle": "",
 "StateMachine": "",
+"Summoner": "",
 "TransitionManager": "",
 "TraumaCamera2D": "",
 "Weapon": "",

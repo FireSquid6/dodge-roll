@@ -12,10 +12,6 @@ onready var campaign = get_node("Campaign")
 onready var endless = get_node("Endless")
 
 
-func _init():
-	Global.hud = self
-	Global.connect("mode_chosen", self, "mode_chosen")
-
 func _ready():
 	$Background.queue_free()
 	visible = true
@@ -44,6 +40,9 @@ func _process(delta):
 
 
 func mode_chosen(mode):
+	campaign.visible = true
+	endless.visible = true
+	
 	var control: Control
 	match mode:
 		Global.MODES.ENDLESS:

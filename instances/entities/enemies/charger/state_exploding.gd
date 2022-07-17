@@ -5,6 +5,9 @@ var explosion_scene = preload("res://instances/weapons/explosion/explosion.tscn"
 
 
 func _enter(args := []):
+	# play prime sound
+	Sound.play_sfx(preload("res://sounds/sfx/bomb_prime.wav"))
+	
 	# start the timer
 	$Timer.start()
 	

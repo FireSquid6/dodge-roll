@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://instances/spawner/spawner.gd" type="Script" id=1]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="WaveTime" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Summoners" type="Node2D" parent="."]
+
+[node name="TopLeft" type="Position2D" parent="."]
+position = Vector2( -64, -64 )
+
+[node name="BottomRight" type="Position2D" parent="."]
+position = Vector2( 128, 128 )
+
+[connection signal="timeout" from="WaveTime" to="." method="_on_WaveTime_timeout"]

@@ -17,6 +17,7 @@ const idle_color = Color("21FA90")
 
 
 func _enter_tree():
+	Global.enemies_left += 1
 	connect("die", self, "enemy_dead")
 	
 	sightline = preload("res://instances/entities/enemies/sightline/signtline.tscn").instance()
@@ -69,7 +70,7 @@ func follow_path(path, amount):
 
 func enemy_dead():
 	# apply screenshake
-	Global.camera.add_trauma(0.4)
+	Global.camera.add_trauma(0.2)
 	
 	# create dead body
 	var body: DeadBody = preload("res://instances/body/body.tscn").instance()

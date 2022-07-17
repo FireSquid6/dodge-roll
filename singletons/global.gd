@@ -29,9 +29,9 @@ signal mode_chosen(mode)
 func _ready():
 	connect("enemy_killed", self, "_on_Global_enemy_killed")
 	add_child(multiplier_timer)
-	multiplier_timer.wait_time = 5
+	multiplier_timer.wait_time = 2
 	multiplier_timer.one_shot = true
-	multiplier_timer.connect("timeout", self, "multiplayer_timer_timeout")
+	multiplier_timer.connect("timeout", self, "multiplier_timer_timeout")
 
 
 func multiplier_timer_timeout():
@@ -40,7 +40,11 @@ func multiplier_timer_timeout():
 
 func _on_Global_enemy_killed():
 	enemies_left -= 1
-	score += 50 * multiplier
+	score += 10 * multiplier
+	
+	multiplier += 1
+	multiplier = clamp(multiplier, 1, 10)
+	multiplier_timer.start()
 
 
 func setup_camera():
@@ -50,3 +54,8 @@ func setup_camera():
 func set_mode(new_mode):
 	mode = new_mode
 	emit_signal("mode_chosen")
+
+
+func _process(delta):
+	if enemy_container:
+		enemies_left = enemy_container.get_child_count()
