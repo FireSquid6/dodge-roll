@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/turret.svg-7112bda51ac4570ee63757edf29a0266.stex"
+path="res://.import/turret.svg-5dde81b967e4c94e229619ce9beda732.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://instances/entities/enemies/turret/turret.svg"
-dest_files=[ "res://.import/turret.svg-7112bda51ac4570ee63757edf29a0266.stex" ]
+source_file="res://instances/gizmos/turret/turret.svg"
+dest_files=[ "res://.import/turret.svg-5dde81b967e4c94e229619ce9beda732.stex" ]
 
 [params]
 

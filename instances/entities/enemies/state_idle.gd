@@ -29,11 +29,12 @@ func _enter(args := []):
 		Sound.play_sfx(preload("res://sounds/sfx/deactivate.wav"))
 	
 	# setup movement
-	timer.wait_time = rand_range(min_time, max_time)
-	timer.start()
-	
-	if (randi() % 100 + 1) <= 50:
-		start_moving()
+	if !enemy.still_while_idle:
+		timer.wait_time = rand_range(min_time, max_time)
+		timer.start()
+		
+		if (randi() % 100 + 1) <= 50:
+			start_moving()
 
 
 func _exit(args := []):
@@ -45,7 +46,7 @@ func _exit(args := []):
 
 
 func _game_logic(delta):
-	if moving:
+	if moving and !enemy.still_while_idle:
 		var velocity = enemy.move_and_slide(idle_spd * move_dir)
 		enemy.rotation = move_dir.angle()
 		enemy.rotation += PI / 2

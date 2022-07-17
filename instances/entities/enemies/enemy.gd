@@ -7,8 +7,9 @@ onready var animation_player: AnimationPlayer = get_node(animation_player_path)
 onready var state_machine = get_node("StateMachine")
 onready var modulated: Node2D = get_node("Modulated")
 
-export var reflex = 0.5
-export var sight = 1024
+var reflex = 0.5
+export var still_while_idle = false
+var sight = 1024
 var sightline: Sightline
 
 const attack_color = Color("FFC0BF")
@@ -77,6 +78,7 @@ func enemy_dead():
 	
 	# call player enemy killed signal
 	Global.player.enemy_killed(self)
+	Global._on_Global_enemy_killed()
 
 
 func look_at_player():

@@ -10,7 +10,6 @@ extents = Vector2( 32, 32 )
 
 [node name="Sniper" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-max_health = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 shape = SubResource( 1 )

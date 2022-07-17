@@ -8,10 +8,13 @@ onready var health_label = get_node("Panel/VBoxContainer/Healthbar/Health")
 onready var weapon_name = get_node("Panel/VBoxContainer/HBoxContainer/WeaponName")
 onready var ammo_count = get_node("Panel/VBoxContainer/HBoxContainer/AmmoCount")
 onready var restart_label: RichTextLabel = get_node("RestartLabel")
+onready var campaign = get_node("Campaign")
+onready var endless = get_node("Endless")
 
 
 func _init():
 	Global.hud = self
+	Global.connect("mode_chosen", self, "mode_chosen")
 
 func _ready():
 	$Background.queue_free()
@@ -38,3 +41,14 @@ func _process(delta):
 	
 	weapon_name.text = player.weapons[player.selected_weapon].weapon_name
 	ammo_count.text = str(player.weapons[player.selected_weapon].in_mag) + "/" + str(player.weapons[player.selected_weapon].mag_size)
+
+
+func mode_chosen(mode):
+	var control: Control
+	match mode:
+		Global.MODES.ENDLESS:
+			control = campaign
+		Global.MODES.CAMPAIGN:
+			control = endless
+	
+	control.queue_free()

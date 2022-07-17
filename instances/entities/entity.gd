@@ -2,7 +2,7 @@ extends KinematicBody2D
 class_name Entity
 
 
-export var max_health := 100.0
+var max_health := 100.0
 var health := 100.0
 var invincible = false
 
@@ -15,6 +15,7 @@ signal die()
 
 var damage_sfx = preload("res://sounds/sfx/damage.wav")
 var die_sfx = preload("res://sounds/sfx/dead.wav")
+var dead = false
 
 
 func _ready():
@@ -28,8 +29,8 @@ func _ready():
 	hitflash_timer.connect("timeout", self, "_on_HitflashTimer_timeout")
 
 
-func deal_damage(dmg):
-	if !invincible:
+func deal_damage(dmg, break_invincibility = false):
+	if !invincible or break_invincibility:
 		# subtract health
 		health -= dmg
 		
@@ -42,7 +43,8 @@ func deal_damage(dmg):
 		emit_signal("damage_taken", dmg)
 		
 		# check if dead
-		if health <= 0:
+		if health <= 0 and !dead:
+			dead = true
 			die()
 
 

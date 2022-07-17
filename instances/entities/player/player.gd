@@ -35,6 +35,10 @@ func _ready():
 	connect("damage_taken", self, "_on_Player_damage_taken")
 	
 	shield.visible = false
+	
+	# double check max health
+	max_health = 50
+	health = max_health
 
 
 func _process(delta):

@@ -13,11 +13,10 @@ func _ready():
 	
 
 func _on_AnimationPlayer_animation_started(anim_name):
-	get_tree().paused = true
+	pass
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	get_tree().paused = false
 	if anim_name == "fade_out":
 		if next_scene:
 			get_tree().change_scene_to(next_scene)

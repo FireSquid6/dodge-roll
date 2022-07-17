@@ -10,6 +10,7 @@ onready var enemy_barriers: TileMap = get_node("EnemyBarriers")
 func _ready():
 	Global.world = self
 	enemy_barriers.visible = false
+	$EnemyBlind.visible = false
 	
 	# SETUP NAVIGATION
 	# get used rect of walls

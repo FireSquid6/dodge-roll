@@ -10,7 +10,6 @@ extents = Vector2( 28, 28 )
 
 [node name="Grunt" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-max_health = 25
 
 [node name="StateIdle" parent="StateMachine" index="0"]
 attack_when_spotted = true

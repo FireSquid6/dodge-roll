@@ -7,5 +7,5 @@ func _ready():
 
 # start the game
 func _on_AnimationPlayer_animation_finished(anim_name):
-	var level_0 = load("res://scenes/levels/level_0.tscn")
-	get_tree().change_scene_to(level_0)
+	var title_screen = load("res://scenes/menus/title_screen/title_screen.tscn")
+	get_tree().change_scene_to(title_screen)
