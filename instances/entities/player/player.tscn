@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://instances/entities/player/states/state_moving.gd" type="Script" id=1]
 [ext_resource path="res://instances/entities/player/player.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://instances/entities/player/states/state_overheat.gd" type="Script" id=14]
 [ext_resource path="res://instances/entities/player/hand.svg" type="Texture" id=15]
 [ext_resource path="res://instances/camera.gd" type="Script" id=16]
+[ext_resource path="res://instances/entities/player/states/state_dead.gd" type="Script" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 28, 28 )
@@ -32,7 +33,6 @@ animations = [ {
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 2 )
-max_health = 99999
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
@@ -55,6 +55,9 @@ one_shot = true
 
 [node name="StateOverheat" type="Node" parent="StateMachine"]
 script = ExtResource( 14 )
+
+[node name="StateDead" type="Node" parent="StateMachine"]
+script = ExtResource( 17 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -98,10 +101,8 @@ one_shot = true
 
 [node name="UI" parent="." instance=ExtResource( 13 )]
 
-[node name="HUD" parent="UI" index="0"]
-visible = false
-
 [node name="Camera2D" type="Camera2D" parent="."]
+pause_mode = 2
 current = true
 editor_draw_screen = false
 script = ExtResource( 16 )

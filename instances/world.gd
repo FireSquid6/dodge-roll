@@ -4,10 +4,12 @@ class_name GameWorld
 
 onready var walls: TileMap = get_node("Walls")
 onready var inverse_walls: TileMap = get_node("InverseWalls")
+onready var enemy_barriers: TileMap = get_node("EnemyBarriers")
 
 
 func _ready():
 	Global.world = self
+	enemy_barriers.visible = false
 	
 	# SETUP NAVIGATION
 	# get used rect of walls

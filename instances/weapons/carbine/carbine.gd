@@ -5,7 +5,7 @@ class_name WeaponCarbine
 func _init():
 	weapon_name = "Carbine"
 	fire_mode = FIRE_MODES.AUTO
-	mag_size = 8
+	mag_size = 12
 	screenshake = 0.15
 	cooldown = 0.2
 	projectile = preload("res://instances/weapons/carbine/carbine_projectile.tscn")

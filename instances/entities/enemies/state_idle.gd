@@ -16,6 +16,10 @@ onready var timer = get_node("Timer")
 
 
 func _enter(args := []):
+	# set bitmask
+	enemy.set_collision_mask_bit(4, true)
+	print(enemy.collision_mask)
+	
 	# connect signals
 	if !enemy.sightline.is_connected("player_spotted", self, "_on_Sightline_player_spotted"):
 		enemy.sightline.connect("player_spotted", self, "_on_Sightline_player_spotted")
@@ -35,6 +39,9 @@ func _enter(args := []):
 func _exit(args := []):
 	# play sound
 	Sound.play_sfx(preload("res://sounds/sfx/activate.wav"))
+	
+	# set bitmask
+	enemy.set_collision_mask_bit(4, false)
 
 
 func _game_logic(delta):

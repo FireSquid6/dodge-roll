@@ -9,6 +9,7 @@ onready var face: AnimatedSprite = get_node("Sprite/Face")
 onready var sprite: Sprite = get_node("Sprite")
 onready var shield: Line2D = get_node("Sprite/Shield")
 onready var heal_timer: Timer = get_node("HealTimer")
+onready var hud: HUD = get_node("UI/HUD")
 
 var velocity: Vector2 = Vector2.ZERO
 export(Array, PackedScene) var weapons = [WeaponRevolver.new(), WeaponSMG.new(), WeaponRifle.new(), WeaponCarbine.new(), WeaponShotgun.new(), WeaponRPG.new()]
@@ -31,6 +32,7 @@ func _ready():
 	Global.player = self
 	
 	reroll_weapon()
+	connect("damage_taken", self, "_on_Player_damage_taken")
 	
 	shield.visible = false
 
@@ -45,8 +47,10 @@ func _process(delta):
 	roll_heat = clamp(roll_heat, 0, max_roll_heat)
 	
 	# heal if able to
-	if can_heal:
-		health = min(health + (heal_rate * delta), max_health)
+	if can_heal and (state_machine.selected_state.name != "StateDead"):
+		health += heal_rate * delta
+	
+	health = clamp(health, 0, max_health)
 
 
 func _physics_process(delta):
@@ -63,7 +67,8 @@ func update_weapon():
 
 
 func die():
-	visible = false
+	Sound.play_sfx(die_sfx)
+	state_machine.change_state("StateDead")
 	emit_signal("die")
 
 

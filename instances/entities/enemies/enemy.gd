@@ -71,6 +71,9 @@ func enemy_dead():
 	Global.camera.add_trauma(0.4)
 	
 	# create dead body
+	var body: DeadBody = preload("res://instances/body/body.tscn").instance()
+	Global.body_container.add_child(body)
+	body.fire(position, get_node("Details").texture)
 	
 	# call player enemy killed signal
 	Global.player.enemy_killed(self)

@@ -2,8 +2,8 @@ extends KinematicBody2D
 class_name Entity
 
 
-export var max_health := 100
-var health := 100
+export var max_health := 100.0
+var health := 100.0
 var invincible = false
 
 onready var hitflash_material = preload("res://instances/entities/hitflash.tres")
