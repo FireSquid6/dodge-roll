@@ -12,7 +12,14 @@ onready var heal_timer: Timer = get_node("HealTimer")
 onready var hud: HUD = get_node("UI/HUD")
 
 var velocity: Vector2 = Vector2.ZERO
-export(Array, PackedScene) var weapons = [WeaponRevolver.new(), WeaponSMG.new(), WeaponRifle.new(), WeaponCarbine.new(), WeaponShotgun.new(), WeaponRPG.new()]
+export(Array, PackedScene) var weapons = [
+	preload("res://resources/weapons/pistol.tres").get_weapon(),
+	preload("res://resources/weapons/smg.tres").get_weapon(),
+	preload("res://resources/weapons/rifle.tres").get_weapon(),
+	preload("res://resources/weapons/carbine.tres").get_weapon(),
+	preload("res://resources/weapons/shotgun.tres").get_weapon(),
+	preload("res://resources/weapons/rpg.tres").get_weapon()
+]
 export(int) var selected_weapon = 0
 var selected_weapon_choices = []
 

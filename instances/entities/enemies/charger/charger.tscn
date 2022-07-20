@@ -39,4 +39,3 @@ use_parent_material = true
 texture = ExtResource( 5 )
 
 [connection signal="timeout" from="StateMachine/StateExploding/Timer" to="StateMachine/StateExploding" method="_on_Timer_timeout"]
-[connection signal="player_lost" from="Sightline" to="StateMachine/StateCharging" method="_on_Sightline_player_lost"]
