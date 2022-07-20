@@ -1,11 +1,11 @@
 extends Node2D
 
 
-var weapon = WeaponTurret.new()
+var weapon = preload("res://resources/weapons/turret.tres").get_weapon()
 
 
 func _ready():
-	weapon.equip($WeaponTimer)
+	weapon.equip()
 
 
 func _process(delta):

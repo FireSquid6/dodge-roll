@@ -4,4 +4,5 @@
 
 [node name="Projectile" type="KinematicBody2D"]
 modulate = Color( 2, 2, 2, 1 )
+collision_layer = 8
 script = ExtResource( 1 )

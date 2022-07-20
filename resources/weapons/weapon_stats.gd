@@ -29,6 +29,7 @@ export(float, 0, 1) var screenshake = 0.1
 export(int, 1, 99) var projectiles = 1
 export(float, 0, 10) var burst_cooldown = 0
 export(bool) var uses_ammo = true
+export(int) var target_layer = 2
 
 
 func get_weapon() -> Weapon:
@@ -67,6 +68,7 @@ func get_weapon() -> Weapon:
 	weapon.sound = sound
 	weapon.fire_mode = fire_mode
 	weapon.needs_ammo = uses_ammo
+	weapon.target_layer = target_layer
 	
 	# return the weapon
 	return weapon

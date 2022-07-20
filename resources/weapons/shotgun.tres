@@ -19,3 +19,4 @@ screenshake = 0.25
 projectiles = 8
 burst_cooldown = 0.0
 uses_ammo = true
+target_layer = 2

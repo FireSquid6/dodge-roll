@@ -89,7 +89,9 @@ width = 5.0
 
 [node name="WeaponTimer" type="Timer" parent="."]
 __meta__ = {
-"_editor_description_": "this timer is a slut, it gets used by every weapon."
+"_editor_description_": "this timer is a slut, it gets used by every weapon.
+
+update: new weapon system has strong and confident weapons that don't need a slutty timer to satisfy them. This timer is now deprecated and unemployed."
 }
 
 [node name="HealTimer" type="Timer" parent="."]

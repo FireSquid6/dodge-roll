@@ -114,9 +114,10 @@ func reroll_weapon():
 	selected_weapon_choices.shuffle()
 	
 	# get the index of the selected weapon
-	selected_weapon = selected_weapon_choices[0]
+	#selected_weapon = selected_weapon_choices[0]
+	selected_weapon = 1
 	selected_weapon_choices.remove(0)
-	weapons[selected_weapon].equip(weapon_timer)
+	weapons[selected_weapon].equip()
 	
 	# set the frame
 	face.frame = selected_weapon

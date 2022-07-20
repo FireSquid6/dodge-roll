@@ -22,24 +22,14 @@ var screenshake = 0.1  # the shake of the weapon
 var needs_ammo = true  # whether the weapon uses ammo or not
 
 var can_fire = false  # whether the rifle can shoot or not post-cooldown
-var timer: Timer  # the timer for cooldown
 var in_mag = mag_size  # the ammo in the mag
+var timer: SceneTreeTimer
 
 
 signal mag_empty()
 
 
-func _init():
-	# setup the cooldown
-	timer = Timer.new()
-	Global.level.add_child(timer)
-	timer.one_shot = true
-	timer.connect("timeout", self, "_on_Timer_timeout")
-
-
 func equip():
-	timer.wait_time = cooldown
-	
 	# set can fire
 	can_fire = true
 	
@@ -65,7 +55,8 @@ func update(projectile_position, projectile_angle):
 				in_mag -= 1
 			
 			can_fire = false
-			timer.start()
+			timer = Global.get_tree().create_timer(cooldown)
+			timer.connect("timeout", self, "_on_Timer_timeout")
 			
 			# create the projectile
 			create_projectile(projectile_position, projectile_angle)
@@ -110,4 +101,3 @@ func get_shoot() -> bool:
 
 func _on_Timer_timeout():
 	can_fire = true
-	timer.start()

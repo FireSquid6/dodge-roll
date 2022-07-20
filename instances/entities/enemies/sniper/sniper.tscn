@@ -23,6 +23,7 @@ spotted_state = "StateSearch"
 script = ExtResource( 3 )
 
 [node name="WeaponTimer" type="Timer" parent="StateMachine/StateSearch" index="0"]
+wait_time = 0.5
 
 [node name="TrackingTimer" type="Timer" parent="StateMachine/StateSearch" index="1"]
 one_shot = true

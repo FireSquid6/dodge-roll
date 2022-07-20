@@ -2,7 +2,7 @@ extends EnemyState
 
 
 export var move_spd = 200
-var weapon: GruntWeapon = GruntWeapon.new()
+var weapon: Weapon = preload("res://resources/weapons/grunt.tres").get_weapon()
 
 
 func _init():
@@ -12,7 +12,7 @@ func _init():
 func _enter(args := []):
 	if !enemy.sightline.is_connected("player_lost", self, "_on_Sightline_player_lost"):
 		enemy.sightline.connect("player_lost", self, "_on_Sightline_player_lost")
-	weapon.equip($WeaponTimer)
+	weapon.equip()
 
 
 func _game_logic(delta):

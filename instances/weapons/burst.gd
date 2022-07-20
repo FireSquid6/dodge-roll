@@ -5,15 +5,8 @@ class_name WeaponBurst
 var shots = 3
 var current_shots 
 var burst_cooldown = 0.03
-var burst_timer = Timer.new()
 
 var burst_shot = true
-
-
-func _init():
-	Global.level.add_child(burst_timer)
-	burst_timer.one_shot = true
-	burst_timer.wait_time = burst_cooldown
 
 
 func _post_equip():
