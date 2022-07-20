@@ -110,7 +110,6 @@ pause_mode = 2
 script = ExtResource( 9 )
 
 [node name="HUD" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -195,13 +194,12 @@ theme = ExtResource( 3 )
 value = 50.0
 percent_visible = false
 
-[node name="RestartLabel" type="RichTextLabel" parent="HUD"]
-visible = false
+[node name="NotificationLabel" type="RichTextLabel" parent="HUD"]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 24.0
 margin_top = -152.0
-margin_right = 712.0
+margin_right = 1888.0
 margin_bottom = -74.0
 custom_fonts/normal_font = SubResource( 4 )
 bbcode_enabled = true
@@ -209,7 +207,6 @@ bbcode_text = "Press [color=yellow]R[/color] to restart"
 text = "Press R to restart"
 
 [node name="Campaign" type="Control" parent="HUD"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 6 )
@@ -224,7 +221,19 @@ text = "Enemies Left: 12"
 align = 1
 valign = 1
 
+[node name="TimeLeft" type="Label" parent="HUD/Campaign"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -128.0
+margin_right = 128.0
+margin_bottom = 128.0
+theme = ExtResource( 3 )
+align = 1
+valign = 1
+autowrap = true
+
 [node name="Endless" type="Control" parent="HUD"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 7 )

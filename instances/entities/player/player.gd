@@ -31,7 +31,7 @@ func _ready():
 	rng.randomize()
 	Global.player = self
 	
-	hud.mode_chosen(Global.mode)
+	hud.mode_chosen(Global.level.mode)
 	
 	reroll_weapon()
 	connect("damage_taken", self, "_on_Player_damage_taken")

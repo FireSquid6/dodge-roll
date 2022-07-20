@@ -25,7 +25,6 @@ script = ExtResource( 3 )
 [node name="WeaponTimer" type="Timer" parent="StateMachine/StateSearch" index="0"]
 
 [node name="TrackingTimer" type="Timer" parent="StateMachine/StateSearch" index="1"]
-wait_time = 1.5
 one_shot = true
 
 [node name="Line2D" type="Line2D" parent="StateMachine/StateSearch" index="2"]
@@ -38,4 +37,10 @@ default_color = Color( 1, 0, 0, 1 )
 use_parent_material = true
 texture = ExtResource( 4 )
 
+[node name="Sightline" parent="." index="4"]
+reflex = 1.0
+sight_distance = 6000
+needs_timer = false
+
 [connection signal="timeout" from="StateMachine/StateSearch/TrackingTimer" to="StateMachine/StateSearch" method="_on_TrackingTimer_timeout"]
+[connection signal="player_lost" from="Sightline" to="StateMachine/StateSearch" method="_on_Sightline_player_lost"]

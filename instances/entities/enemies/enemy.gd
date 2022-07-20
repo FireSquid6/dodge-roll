@@ -10,20 +10,15 @@ onready var modulated: Node2D = get_node("Modulated")
 var reflex = 0.5
 export var still_while_idle = false
 var sight = 1024
-var sightline: Sightline
+onready var sightline: Sightline = get_node("Sightline")
 
 const attack_color = Color("FFC0BF")
 const idle_color = Color("21FA90")
 
 
 func _enter_tree():
-	Global.enemies_left += 1
+	Global.level.enemies_left += 1
 	connect("die", self, "enemy_dead")
-	
-	sightline = preload("res://instances/entities/enemies/sightline/signtline.tscn").instance()
-	add_child(sightline)
-	sightline.reflex = reflex
-	sightline.sight_distance = sight
 
 
 func _physics_process(delta):
@@ -79,7 +74,7 @@ func enemy_dead():
 	
 	# call player enemy killed signal
 	Global.player.enemy_killed(self)
-	Global._on_Global_enemy_killed()
+	Global.level._on_Global_enemy_killed()
 
 
 func look_at_player():

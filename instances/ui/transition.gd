@@ -17,9 +17,9 @@ func _on_AnimationPlayer_animation_started(anim_name):
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	Global.score = 0
-	Global.multiplier = 1
-	Global.multiplier_timer.stop()
+	Global.level.score = 0
+	Global.level.multiplier = 1
+	Global.level.multiplier_timer.stop()
 	
 	if anim_name == "fade_out":
 		if next_scene:

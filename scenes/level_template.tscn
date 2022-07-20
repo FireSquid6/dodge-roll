@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
+[ext_resource path="res://level_environment.tres" type="Environment" id=1]
 [ext_resource path="res://instances/level.gd" type="Script" id=2]
 [ext_resource path="res://instances/tilemaps/walls/walls.tscn" type="PackedScene" id=3]
 [ext_resource path="res://instances/tilemaps/floor/floor.tscn" type="PackedScene" id=4]
@@ -38,6 +39,8 @@ __meta__ = {
 [node name="Sprays" type="Node2D" parent="."]
 z_index = -1
 
+[node name="Lights" type="Node2D" parent="."]
+
 [node name="World" type="Navigation2D" parent="."]
 z_index = -2
 script = ExtResource( 7 )
@@ -52,7 +55,7 @@ collision_layer = 0
 collision_mask = 0
 
 [node name="Walls" parent="World" instance=ExtResource( 3 )]
-modulate = Color( 0.129412, 0.980392, 0.564706, 1 )
+modulate = Color( 0, 2.91, 1.16, 1 )
 
 [node name="FakeWalls" parent="World" instance=ExtResource( 3 )]
 modulate = Color( 0.129412, 0.980392, 0.564706, 1 )
@@ -76,3 +79,14 @@ collision_mask = 8
 visible = false
 collision_layer = 0
 collision_mask = 0
+
+[node name="LevelTime" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 1 )
+
+[connection signal="timeout" from="LevelTime" to="." method="_on_LevelTime_timeout"]

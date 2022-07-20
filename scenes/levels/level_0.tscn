@@ -1,14 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/level_template.tscn" type="PackedScene" id=1]
 [ext_resource path="res://instances/entities/player/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://instances/gizmos/turret/turret.tscn" type="PackedScene" id=3]
 [ext_resource path="res://instances/entities/enemies/grunt/grunt.tscn" type="PackedScene" id=4]
-[ext_resource path="res://instances/gizmos/exit/exit.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/levels/level_1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://instances/spray/spray.tscn" type="PackedScene" id=7]
 
 [node name="Level0" instance=ExtResource( 1 )]
+next_scene = ExtResource( 6 )
 
 [node name="Grunt2" parent="Entities/Enemies" index="0" instance=ExtResource( 4 )]
 position = Vector2( 3968, 960 )
@@ -51,10 +51,6 @@ rotation = 1.5708
 [node name="Turret14" parent="Gizmos" index="7" instance=ExtResource( 3 )]
 position = Vector2( 2848, 1312 )
 rotation = 1.5708
-
-[node name="Exit" parent="Gizmos" index="8" instance=ExtResource( 5 )]
-position = Vector2( 6208, 256 )
-next_level = ExtResource( 6 )
 
 [node name="Spray" parent="Sprays" index="0" instance=ExtResource( 7 )]
 margin_left = 528.0
@@ -103,3 +99,6 @@ tile_data = PoolIntArray( 81, 0, 196608, 82, 0, 196609, 83, 0, 196609, 84, 0, 19
 [node name="Shields" parent="World" index="5"]
 z_index = 8
 z_as_relative = false
+
+[node name="LevelTime" parent="." index="7"]
+wait_time = 90.0

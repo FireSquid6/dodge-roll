@@ -100,6 +100,9 @@ one_shot = true
 
 [node name="UI" parent="." instance=ExtResource( 13 )]
 
+[node name="HUD" parent="UI" index="0"]
+visible = false
+
 [node name="Camera2D" type="Camera2D" parent="."]
 pause_mode = 2
 current = true

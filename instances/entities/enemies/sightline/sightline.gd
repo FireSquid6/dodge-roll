@@ -5,9 +5,10 @@ class_name Sightline
 onready var range_checker: Area2D = get_node("RangeChecker")
 onready var reflex_timer: Timer = get_node("Reflex")
 onready var obstruction_checker: Area2D = get_node("Node/ObstructionChecker")
-var reflex = 0.5
-var sight_distance = 1024
+export var reflex = 0.5
+export var sight_distance = 1024
 var player_in_sight = false
+export var needs_timer = true
 
 
 signal player_spotted()
@@ -38,7 +39,10 @@ func _physics_process(delta):
 	# SIGNAL
 	if in_range and !obstructed:
 		if reflex_timer.is_stopped() and !player_in_sight:
-			reflex_timer.start()
+			if needs_timer:
+				reflex_timer.start()
+			else:
+				_on_Reflex_timeout()
 	elif player_in_sight:
 		player_in_sight = false
 		emit_signal("player_lost")
