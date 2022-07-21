@@ -20,3 +20,5 @@ projectiles = 1
 burst_cooldown = 0.0
 uses_ammo = true
 target_layer = 2
+silent = false
+snaps = false

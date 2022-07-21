@@ -4,9 +4,9 @@ class_name WeaponBurst
 
 var shots = 3
 var current_shots 
-var burst_cooldown = 0.03
+var burst_cooldown = 0.15
 
-var burst_shot = true
+var burst_shot = false
 
 
 func _post_equip():
@@ -20,19 +20,19 @@ func create_projectile(projectile_position, projectile_angle):
 	current_shots -= 1
 	
 	if current_shots > 0:
-		burst_shot = true
 		can_fire = true
-		timer.stop()
-		burst_timer.start()
+		Global.get_tree().create_timer(burst_cooldown).connect("timeout", self, "burst_timer_timeout")
+		timer.time_left += burst_cooldown
+	else:
+		can_fire = false
 
 
 func burst_timer_timeout():
 	burst_shot = true
-	current_shots = shots
 
 
 func get_shoot() -> bool:
-	var shoot = burst_shot
+	var shoot = false
 	match fire_mode:
 		FIRE_MODES.AUTO:
 			shoot = Input.is_action_pressed("shoot")
@@ -41,4 +41,12 @@ func get_shoot() -> bool:
 		FIRE_MODES.AI:
 			shoot = true
 	
+	if burst_shot:
+		shoot = true
+	
 	return shoot
+
+
+func _on_Timer_timeout():
+	current_shots = shots
+	can_fire = true

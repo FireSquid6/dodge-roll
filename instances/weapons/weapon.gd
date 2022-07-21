@@ -16,7 +16,7 @@ var mag_size = 6  # the amount of mags in the weapon
 var cooldown = 0.2  # the amount of time that needs to pass between each shot
 var projectile: PackedScene  # the projectile to shoot
 var target_layer = 2  # the target layer of the weapon
-var sound = preload("res://sounds/sfx/gunshot_light.wav")  # the sound the gun makes when fired
+var sound = null  # the sound the gun makes when fired
 var weapon_name = "Gun" # the display name of the weapon
 var screenshake = 0.1  # the shake of the weapon
 var needs_ammo = true  # whether the weapon uses ammo or not
@@ -24,12 +24,18 @@ var needs_ammo = true  # whether the weapon uses ammo or not
 var can_fire = false  # whether the rifle can shoot or not post-cooldown
 var in_mag = mag_size  # the ammo in the mag
 var timer: SceneTreeTimer
+var silent = false
+var snaps = true
 
 
 signal mag_empty()
 
 
 func equip():
+	# set snap
+	if fire_mode != FIRE_MODES.AI:
+		Cursor.snapping_enabled = snaps
+	
 	# set can fire
 	can_fire = true
 	
@@ -62,7 +68,8 @@ func update(projectile_position, projectile_angle):
 			create_projectile(projectile_position, projectile_angle)
 			
 			# play sound
-			Sound.play_sfx(sound)
+			if !silent:
+				Sound.play_sfx(sound)
 			
 			# apply screenshake
 			if fire_mode != FIRE_MODES.AI:

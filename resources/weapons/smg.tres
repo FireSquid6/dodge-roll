@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://sounds/sfx/gunshot_medium.wav" type="AudioStream" id=1]
+[ext_resource path="res://sounds/sfx/gunshot_light.wav" type="AudioStream" id=1]
 [ext_resource path="res://resources/weapons/weapon_stats.gd" type="Script" id=2]
 
 [resource]
@@ -20,3 +20,5 @@ projectiles = 1
 burst_cooldown = 0.0
 uses_ammo = true
 target_layer = 2
+silent = false
+snaps = false

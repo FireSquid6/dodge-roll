@@ -30,7 +30,9 @@ export(int, 1, 99) var projectiles = 1
 export(float, 0, 10) var burst_cooldown = 0
 export(bool) var uses_ammo = true
 export(int) var target_layer = 2
-
+export(bool) var silent = false
+export(bool) var snaps = true
+#
 
 func get_weapon() -> Weapon:
 	var weapon: Weapon
@@ -59,8 +61,10 @@ func get_weapon() -> Weapon:
 	weapon.damage = damage
 	weapon.speed = speed
 	weapon.accuracy = accuracy
+	weapon.silent = silent
 	
 	# setup gun info
+	weapon.snaps = snaps
 	weapon.weapon_name = weapon_name
 	weapon.cooldown = cooldown
 	weapon.mag_size = mag_size

@@ -4,6 +4,7 @@ class_name DeadBody
 
 func fire(starting_pos: Vector2, texture: Texture):
 	# play animation
+	$CPUParticles2D.restart()
 	$AnimationPlayer.play("fade_out")
 	
 	# set texture

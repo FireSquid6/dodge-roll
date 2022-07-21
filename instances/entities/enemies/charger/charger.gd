@@ -1,4 +1,5 @@
 extends Enemy
+class_name EnemyCharger
 
 
 func _init():

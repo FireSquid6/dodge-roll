@@ -34,7 +34,7 @@ points = PoolVector2Array( -28.0002, -47.9999, -58, 0, -27.9998, 48.0001 )
 width = 5.0
 default_color = Color( 0.231373, 0.356863, 0.988235, 1 )
 
-[node name="Details" type="Sprite" parent="." index="4"]
+[node name="Details" type="Sprite" parent="." index="5"]
 use_parent_material = true
 texture = ExtResource( 5 )
 
