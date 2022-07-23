@@ -1,8 +1,8 @@
 extends Node2D
 
 
-export var width = 16
-export var length = 4096
+export var width = 64
+export var length = 512
 var anchor_node: Node2D = null
 var snapping_enabled = false
 var real_position = position
@@ -12,6 +12,11 @@ onready var snapped_pos: Node2D = get_node("Position2D")
 onready var collision_shape: Node2D = get_node("Area2D/CollisionShape2D")
 onready var real_pos_polygon: Polygon2D = get_node("Position2D/Polygon2D")
 onready var area: Area2D = get_node("Area2D")
+
+
+func _ready():
+	# make mouse invisible
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 
 func _process(delta):

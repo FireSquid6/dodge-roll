@@ -100,5 +100,5 @@ tile_data = PoolIntArray( 81, 0, 196608, 82, 0, 196609, 83, 0, 196609, 84, 0, 19
 z_index = 8
 z_as_relative = false
 
-[node name="LevelTime" parent="." index="7"]
+[node name="LevelTime" parent="." index="6"]
 wait_time = 90.0
