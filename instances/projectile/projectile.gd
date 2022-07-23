@@ -16,7 +16,7 @@ func _ready():
 	timer = Timer.new()
 	add_child(timer)
 	
-	timer.wait_time = 0.01
+	timer.wait_time = 0.03
 	timer.connect("timeout", self, "timer_timeout")
 	timer.start()
 	

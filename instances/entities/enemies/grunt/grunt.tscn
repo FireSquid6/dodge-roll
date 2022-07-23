@@ -25,4 +25,7 @@ shape = SubResource( 1 )
 use_parent_material = true
 texture = ExtResource( 5 )
 
+[node name="Sightline" parent="." index="5"]
+sight_distance = 2048
+
 [connection signal="player_lost" from="Sightline" to="StateMachine/StateAttack" method="_on_Sightline_player_lost"]

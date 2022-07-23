@@ -26,6 +26,7 @@ var in_mag = mag_size  # the ammo in the mag
 var timer: SceneTreeTimer
 var silent = false
 var snaps = true
+var hand_texture = null
 
 
 signal mag_empty()
