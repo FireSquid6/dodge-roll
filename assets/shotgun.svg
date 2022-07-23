@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 64 64" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs/>
+<g id="Layer-1" vectornator:layerName="Layer 1">
+<path d="M34 40C34 37.7909 36.6863 36 40 36C43.3137 36 46 37.7909 46 40C46 42.2091 43.3137 44 40 44C36.6863 44 34 42.2091 34 40Z" fill="#b8b8b8" fill-rule="evenodd" opacity="1" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0" stroke-width="2"/>
+<path d="M24 31C24 27.4728 24 16.8473 24 13.3077C24 9.76923 26.8954 8 28 8C29.1046 8 32 9.25785 32 13.3077C32 16.8462 32 25.1373 32 31C32 36.8627 32 45.1538 32 48.6923C32 52.7421 29.1046 54 28 54C26.8954 54 24 52.7421 24 48.6923C24 45.1538 24 36.8627 24 31Z" fill="#535353" fill-rule="evenodd" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="round" stroke-width="2"/>
+<path d="M32 31C32 27.4728 32 16.8473 32 13.3077C32 9.76923 34.8954 8 36 8C37.1046 8 40 9.25785 40 13.3077C40 16.8462 40 25.1373 40 31C40 36.8627 40 45.1538 40 48.6923C40 52.7421 37.1046 54 36 54C34.8954 54 32 52.7421 32 48.6923C32 45.1538 32 36.8627 32 31Z" fill="#535353" fill-rule="evenodd" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="round" stroke-width="2"/>
+<path d="M24 36.3077L24 50.4615L28 54L36 54L40 50.4615L40 36.3077L24 36.3077Z" fill="#b3b3b3" fill-rule="evenodd" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="round" stroke-width="2"/>
+<path d="M24 13.3077C24 9.88778 25.7909 8 28 8C30.2091 8 32 9.88778 32 13.3077C32 16.7276 30.2091 13.3077 28 13.3077C25.7909 13.3077 24 16.7276 24 13.3077Z" fill="#f2280b" fill-rule="evenodd" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="round" stroke-opacity="0.0012684" stroke-width="0.1"/>
+<path d="M32 13.3077C32 9.88778 33.7909 8 36 8C38.2091 8 40 9.88778 40 13.3077C40 16.7276 38.2091 13.3077 36 13.3077C33.7909 13.3077 32 16.7276 32 13.3077Z" fill="#f2280b" fill-rule="evenodd" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="round" stroke-opacity="0" stroke-width="0.1"/>
+</g>
+</svg>
