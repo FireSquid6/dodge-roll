@@ -18,12 +18,10 @@ spotted_state = "StateAttack"
 [node name="StateAttack" type="Node" parent="StateMachine" index="1"]
 script = ExtResource( 3 )
 
-[node name="WeaponTimer" type="Timer" parent="StateMachine/StateAttack" index="0"]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 shape = SubResource( 1 )
 
-[node name="Details" type="Sprite" parent="." index="3"]
+[node name="Details" type="Sprite" parent="." index="4"]
 use_parent_material = true
 texture = ExtResource( 5 )
 

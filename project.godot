@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://instances/entities/enemies/enemy.gd"
 }, {
+"base": "Enemy",
+"class": "EnemyCharger",
+"language": "GDScript",
+"path": "res://instances/entities/enemies/charger/charger.gd"
+}, {
 "base": "State",
 "class": "EnemyState",
 "language": "GDScript",
@@ -38,11 +43,6 @@ _global_script_classes=[ {
 "class": "GameWorld",
 "language": "GDScript",
 "path": "res://instances/world.gd"
-}, {
-"base": "Weapon",
-"class": "GruntWeapon",
-"language": "GDScript",
-"path": "res://instances/weapons/grunt_weapon/grunt_weapon.gd"
 }, {
 "base": "Control",
 "class": "HUD",
@@ -72,7 +72,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Projectile",
 "language": "GDScript",
-"path": "res://instances/weapons/projectile.gd"
+"path": "res://instances/projectile/projectile.gd"
 }, {
 "base": "AudioStreamPlayer",
 "class": "SFX",
@@ -120,53 +120,28 @@ _global_script_classes=[ {
 "path": "res://instances/weapons/weapon.gd"
 }, {
 "base": "Weapon",
-"class": "WeaponCarbine",
+"class": "WeaponBurst",
 "language": "GDScript",
-"path": "res://instances/weapons/carbine/carbine.gd"
-}, {
-"base": "Weapon",
-"class": "WeaponRPG",
-"language": "GDScript",
-"path": "res://instances/weapons/rpg/rpg.gd"
-}, {
-"base": "Weapon",
-"class": "WeaponRevolver",
-"language": "GDScript",
-"path": "res://instances/weapons/revolver/revolver.gd"
-}, {
-"base": "Weapon",
-"class": "WeaponRifle",
-"language": "GDScript",
-"path": "res://instances/weapons/rifle/rifle.gd"
-}, {
-"base": "Weapon",
-"class": "WeaponSMG",
-"language": "GDScript",
-"path": "res://instances/weapons/smg/smg.gd"
+"path": "res://instances/weapons/burst.gd"
 }, {
 "base": "Weapon",
 "class": "WeaponShotgun",
 "language": "GDScript",
-"path": "res://instances/weapons/shotgun/shotgun.gd"
+"path": "res://instances/weapons/shotgun.gd"
 }, {
-"base": "Weapon",
-"class": "WeaponSniper",
+"base": "Resource",
+"class": "WeaponStats",
 "language": "GDScript",
-"path": "res://instances/weapons/sniper_weapon/sniper_weapon.gd"
-}, {
-"base": "Weapon",
-"class": "WeaponTurret",
-"language": "GDScript",
-"path": "res://instances/weapons/turret_weapon/turret_weapon.gd"
+"path": "res://resources/weapons/weapon_stats.gd"
 } ]
 _global_script_class_icons={
 "Circle2D": "",
 "DeadBody": "",
 "Enemy": "",
+"EnemyCharger": "",
 "EnemyState": "",
 "Entity": "",
 "GameWorld": "",
-"GruntWeapon": "",
 "HUD": "",
 "Level": "",
 "PlatformController2D": "",
@@ -182,14 +157,9 @@ _global_script_class_icons={
 "TransitionManager": "",
 "TraumaCamera2D": "",
 "Weapon": "",
-"WeaponCarbine": "",
-"WeaponRPG": "",
-"WeaponRevolver": "",
-"WeaponRifle": "",
-"WeaponSMG": "",
+"WeaponBurst": "",
 "WeaponShotgun": "",
-"WeaponSniper": "",
-"WeaponTurret": ""
+"WeaponStats": ""
 }
 
 [application]
@@ -202,6 +172,7 @@ config/icon="res://icon.png"
 
 Global="*res://singletons/global.gd"
 Sound="*res://singletons/sound/sound.tscn"
+Cursor="*res://instances/cursor/cursor.tscn"
 
 [display]
 
@@ -209,9 +180,6 @@ window/size/width=1920
 window/size/height=1080
 window/size/test_width=960
 window/size/test_height=540
-mouse_cursor/custom_image="res://cursor.png"
-mouse_cursor/custom_image_hotspot=Vector2( 16, 16 )
-mouse_cursor/tooltip_position_offset=Vector2( 16, 16 )
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
 

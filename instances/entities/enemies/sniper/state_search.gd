@@ -1,7 +1,7 @@
 extends EnemyState
 
 
-var weapon: WeaponSniper = WeaponSniper.new()
+var weapon: Weapon = preload("res://resources/weapons/sniper.tres").get_weapon()
 onready var tracking_timer = get_node("TrackingTimer")
 onready var weapon_timer = get_node("WeaponTimer")
 onready var line = get_node("Line2D")
@@ -11,7 +11,7 @@ func _enter(args := []):
 	if !enemy.sightline.is_connected("player_lost", self, "_on_Sightline_player_lost"):
 		enemy.sightline.connect("player_lost", self, "_on_Sightline_player_lost")
 	
-	weapon.equip(weapon_timer)
+	weapon.equip()
 	tracking_timer.start()
 	
 	line.visible = true

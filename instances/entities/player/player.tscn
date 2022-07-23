@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://instances/entities/player/states/state_moving.gd" type="Script" id=1]
 [ext_resource path="res://instances/entities/player/player.gd" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://instances/entities/player/hand.svg" type="Texture" id=15]
 [ext_resource path="res://instances/camera.gd" type="Script" id=16]
 [ext_resource path="res://instances/entities/player/states/state_dead.gd" type="Script" id=17]
+[ext_resource path="res://instances/entities/damage_particles.tscn" type="PackedScene" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 28, 28 )
@@ -61,6 +62,8 @@ script = ExtResource( 17 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
+[node name="CPUParticles2D" parent="." instance=ExtResource( 18 )]
+
 [node name="Hands" type="Sprite" parent="."]
 position = Vector2( 0, 9.53674e-07 )
 scale = Vector2( 1.875, 1.87499 )
@@ -89,7 +92,9 @@ width = 5.0
 
 [node name="WeaponTimer" type="Timer" parent="."]
 __meta__ = {
-"_editor_description_": "this timer is a slut, it gets used by every weapon."
+"_editor_description_": "this timer is a slut, it gets used by every weapon.
+
+update: new weapon system has strong and confident weapons that don't need a slutty timer to satisfy them. This timer is now deprecated and unemployed."
 }
 
 [node name="HealTimer" type="Timer" parent="."]

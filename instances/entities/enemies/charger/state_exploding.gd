@@ -1,7 +1,7 @@
 extends EnemyState
 
 
-var explosion_scene = preload("res://instances/weapons/explosion/explosion.tscn")
+var explosion_scene = preload("res://instances/explosion/explosion.tscn")
 
 
 func _enter(args := []):

@@ -10,9 +10,17 @@ onready var sprite: Sprite = get_node("Sprite")
 onready var shield: Line2D = get_node("Sprite/Shield")
 onready var heal_timer: Timer = get_node("HealTimer")
 onready var hud: HUD = get_node("UI/HUD")
+onready var particles: CPUParticles2D = get_node("CPUParticles2D")
 
 var velocity: Vector2 = Vector2.ZERO
-export(Array, PackedScene) var weapons = [WeaponRevolver.new(), WeaponSMG.new(), WeaponRifle.new(), WeaponCarbine.new(), WeaponShotgun.new(), WeaponRPG.new()]
+export(Array, PackedScene) var weapons = [
+	preload("res://resources/weapons/pistol.tres").get_weapon(),
+	preload("res://resources/weapons/smg.tres").get_weapon(),
+	preload("res://resources/weapons/rifle.tres").get_weapon(),
+	preload("res://resources/weapons/carbine.tres").get_weapon(),
+	preload("res://resources/weapons/shotgun.tres").get_weapon(),
+	preload("res://resources/weapons/rpg.tres").get_weapon()
+]
 export(int) var selected_weapon = 0
 var selected_weapon_choices = []
 
@@ -28,6 +36,9 @@ var rng = RandomNumberGenerator.new()
 
 
 func _ready():
+	Cursor.anchor_node = self
+	Cursor.snapping_enabled = true
+	
 	rng.randomize()
 	Global.player = self
 	
@@ -97,6 +108,9 @@ func _on_Player_damage_taken(dmg):
 	# reset heal timer
 	can_heal = false
 	heal_timer.start()
+	
+	# play particles
+	particles.restart()
 
 
 func reroll_weapon():
@@ -109,7 +123,7 @@ func reroll_weapon():
 	# get the index of the selected weapon
 	selected_weapon = selected_weapon_choices[0]
 	selected_weapon_choices.remove(0)
-	weapons[selected_weapon].equip(weapon_timer)
+	weapons[selected_weapon].equip()
 	
 	# set the frame
 	face.frame = selected_weapon

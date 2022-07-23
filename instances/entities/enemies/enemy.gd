@@ -6,6 +6,7 @@ export(NodePath) var animation_player_path = ""
 onready var animation_player: AnimationPlayer = get_node(animation_player_path)
 onready var state_machine = get_node("StateMachine")
 onready var modulated: Node2D = get_node("Modulated")
+onready var particles: CPUParticles2D = get_node("CPUParticles2D")
 
 var reflex = 0.5
 export var still_while_idle = false
@@ -85,3 +86,7 @@ func look_at_player():
 func move_towards_player(move_spd):
 	var dir = position.direction_to(Global.player.position)
 	move_and_slide(dir * move_spd)
+
+
+func _on_Enemy_damage_taken(dmg):
+	particles.restart()
