@@ -1,7 +1,8 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://sounds/sfx/gunshot_heavy.wav" type="AudioStream" id=1]
 [ext_resource path="res://resources/weapons/weapon_stats.gd" type="Script" id=2]
+[ext_resource path="res://assets/weapons/rocket_launcher.png" type="Texture" id=3]
 
 [resource]
 script = ExtResource( 2 )
@@ -22,3 +23,4 @@ uses_ammo = true
 target_layer = 2
 silent = false
 snaps = false
+hand_texture = ExtResource( 3 )

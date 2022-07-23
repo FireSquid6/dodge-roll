@@ -32,6 +32,7 @@ export(bool) var uses_ammo = true
 export(int) var target_layer = 2
 export(bool) var silent = false
 export(bool) var snaps = true
+export(Texture) var hand_texture = null
 #
 
 func get_weapon() -> Weapon:
@@ -73,6 +74,7 @@ func get_weapon() -> Weapon:
 	weapon.fire_mode = fire_mode
 	weapon.needs_ammo = uses_ammo
 	weapon.target_layer = target_layer
+	weapon.hand_texture = hand_texture
 	
 	# return the weapon
 	return weapon

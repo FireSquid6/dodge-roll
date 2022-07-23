@@ -38,4 +38,8 @@ default_color = Color( 0.231373, 0.356863, 0.988235, 1 )
 use_parent_material = true
 texture = ExtResource( 5 )
 
+[node name="Sightline" parent="." index="6"]
+reflex = 0.2
+sight_distance = 2048
+
 [connection signal="timeout" from="StateMachine/StateExploding/Timer" to="StateMachine/StateExploding" method="_on_Timer_timeout"]
