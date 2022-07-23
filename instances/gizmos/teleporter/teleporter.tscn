@@ -1,15 +1,103 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://instances/gizmos/outline.tres" type="Material" id=1]
 [ext_resource path="res://instances/gizmos/teleporter/teleporter_outline.svg" type="Texture" id=2]
 [ext_resource path="res://instances/gizmos/teleporter/teleporter_center.svg" type="Texture" id=3]
+[ext_resource path="res://instances/gizmos/teleporter/teleporter.gd" type="Script" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 80.0
 
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("TeleporterCenter:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("TeleporterCenter:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0.980392, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("TeleporterCenter:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0.509804, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("TeleporterCenter:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "teleport"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("TeleporterCenter:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.996078, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.5, 0.7, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("TeleporterCenter:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0.980392, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.964706, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.5, 0.7, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("TeleporterCenter:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0.509804, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.447059, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.556863, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.5, 0.7, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("TeleporterCenter:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 )
+}
+
 [node name="Teleporter" type="Area2D"]
 material = ExtResource( 1 )
 collision_mask = 2
+script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -18,4 +106,13 @@ shape = SubResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="TeleporterCenter" type="Sprite" parent="."]
+modulate = Color( 1, 0.980392, 0.509804, 1 )
 texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
+anims/teleport = SubResource( 2 )
+
+[connection signal="body_entered" from="." to="." method="_on_Teleporter_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Teleporter_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

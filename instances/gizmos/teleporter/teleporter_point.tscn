@@ -1,3 +1,8 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
 
-[node name="Position2D" type="Position2D"]
+[ext_resource path="res://instances/gizmos/teleporter/teleporter_point.svg" type="Texture" id=1]
+
+[node name="TeleporterPoint" type="Position2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
