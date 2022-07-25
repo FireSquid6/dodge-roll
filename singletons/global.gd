@@ -36,6 +36,6 @@ func _exit_tree():
 	# save self
 	var file = File.new()
 	file.open(save_file, File.WRITE)
-	file.store_var(save)
+	file.store_var(save, true)
 	file.close()
 	
