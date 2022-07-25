@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/menus/pause_menu/volume control/volume_theme.tres" type="Theme" id=1]
+[ext_resource path="res://scenes/menus/pause_menu/volume control/volume_control.gd" type="Script" id=2]
+
+[node name="VolumeControl" type="Panel"]
+margin_right = 448.0
+margin_bottom = 88.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_right = 126.0
+margin_bottom = 88.0
+size_flags_vertical = 3
+text = "Bus Name"
+valign = 1
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer"]
+margin_left = 130.0
+margin_right = 353.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer"]
+margin_left = 357.0
+margin_right = 448.0
+margin_bottom = 88.0
+size_flags_horizontal = 5
+size_flags_vertical = 5
+theme = ExtResource( 1 )
+text = "Mute"
+
+[connection signal="value_changed" from="HBoxContainer/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="toggled" from="HBoxContainer/CheckBox" to="." method="_on_CheckBox_toggled"]

@@ -18,12 +18,15 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -256.0
-margin_top = -248.0
-margin_right = 256.0
-margin_bottom = -56.0
+margin_left = -128.0
+margin_top = -296.0
+margin_right = 384.0
+margin_bottom = -104.0
 theme = ExtResource( 2 )
 text = "Resume Game"
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="ResumeGame" to="ResumeGame" method="_on_ResumeGame_pressed"]
