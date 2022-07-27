@@ -3,8 +3,8 @@ class_name Save
 
 
 class AudioSettings:
-	var volume
-	var muted
+	var volume: float
+	var muted: float
 	
 	func _init(_muted: bool, _volume: float):
 		volume = _volume

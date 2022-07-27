@@ -54,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://instances/level.gd"
 }, {
+"base": "Object",
+"class": "ObjectFreezer",
+"language": "GDScript",
+"path": "res://addons/prototyper/object_freezer.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "PlatformController2D",
 "language": "GDScript",
@@ -149,6 +154,7 @@ _global_script_class_icons={
 "GameWorld": "",
 "HUD": "",
 "Level": "",
+"ObjectFreezer": "",
 "PlatformController2D": "",
 "Player": "",
 "PlayerState": "",
@@ -170,7 +176,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Gmtk-game-jam- 2022"
+config/name="Dodge Roll"
+config/description="A game about a dice that can shoot."
 run/main_scene="res://scenes/menus/splash_screen/splash_screen.tscn"
 config/icon="res://icon.png"
 

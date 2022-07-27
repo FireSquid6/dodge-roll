@@ -135,3 +135,7 @@ func enemy_killed(enemy):
 
 func _on_HealTimer_timeout():
 	can_heal = true
+
+
+func _exit_tree():
+	Cursor.snapping_enabled = false

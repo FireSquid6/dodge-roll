@@ -38,6 +38,9 @@ __meta__ = {
 
 [node name="Sprays" type="Node2D" parent="."]
 z_index = -1
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="World" type="Navigation2D" parent="."]
 z_index = -2
@@ -84,6 +87,9 @@ wait_time = 60.0
 one_shot = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 1 )
